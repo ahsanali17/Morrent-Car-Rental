@@ -1,5 +1,18 @@
 import styled from "styled-components";
 
+export const PopularCarSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin:1rem;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+  margin:2rem;
+  }
+  @media (min-width: 1024px) {
+  }
+`;
+
 export const PopularCarDiv = styled.div`
   display: flex;
   flex-direction: row;

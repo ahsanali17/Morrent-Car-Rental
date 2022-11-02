@@ -31,7 +31,7 @@ const CarCard: FC = () => {
           <Liked />
         </CardRow1>
         <CardRow2>
-          <img src="./src/assets/cars/car.png" />
+          <img src="./cars/car.png" />
         </CardRow2>
         <CardRow3>
           <CardSpesificationDiv>

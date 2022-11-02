@@ -13,7 +13,7 @@ const SingleFeaturedCard: FC = () => {
         <FeaturedContentDesc>Ease of doing a car rental safely and reliably. Of course at a low price.</FeaturedContentDesc>
         <ButtonBlueLg />
         <FeaturedContentImage>
-          <FeaturedImage src="./src/assets/cars/car2.png" />
+          <FeaturedImage src="./cars/car2.png" />
         </FeaturedContentImage>
       </FeaturedContent>
     </FeaturedWrapper>

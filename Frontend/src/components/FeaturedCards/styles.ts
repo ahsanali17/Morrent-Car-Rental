@@ -51,7 +51,7 @@ export const Input = styled.input`
   border: 1px solid rgba(195, 212, 233, 0.4);
   border-radius: 10px;
   display: flex;
-  min-width: 320px;
+  min-width: 270px;
   padding-left: 3rem;
   ::placeholder {
     color: #3d5278;

@@ -59,6 +59,65 @@ export const NavIcon = styled.svg`
     margin: 0 2px;
   }
 `;
+export const LikeIcon = styled.svg`
+  display: none;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+    display: block;
+    margin: 0 2px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  @media (min-width: 1024px) {
+  }
+  @media (min-width: 1280px) {
+  }
+`;
+export const BellIcon = styled.svg`
+  display: none;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+    display: block;
+    margin: 0 2px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  @media (min-width: 1024px) {
+  }
+  @media (min-width: 1280px) {
+  }
+`;
+export const SettingIcon = styled.svg`
+  display: none;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+    display: block;
+    margin: 0 2px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  @media (min-width: 1024px) {
+  }
+  @media (min-width: 1280px) {
+  }
+`;
+export const AvatarIcon = styled.svg`
+display: block;
+margin: 0 2px;
+cursor: pointer;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+    margin: 0 5px;
+  }
+  @media (min-width: 1024px) {
+  }
+  @media (min-width: 1280px) {
+  }
+`;
 export const NavItems = styled.div`
   /* display: flex;
   gap: 1.25rem;

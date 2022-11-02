@@ -24,7 +24,7 @@ const SingleFeaturedCard2: FC = () => {
                 </FeaturedContentDesc>
                 <ButtonLightBlueLg />
                 <FeaturedContentImage>
-                    <FeaturedImage src="./src/assets/cars/car3.png" />
+                    <FeaturedImage src="./cars/car3.png" />
                 </FeaturedContentImage>
             </FeaturedContent>
         </FeaturedWrapper>

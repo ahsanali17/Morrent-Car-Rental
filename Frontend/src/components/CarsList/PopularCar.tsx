@@ -1,11 +1,11 @@
 import React from 'react'
 import CarCard from '../CarCard/CarCard'
 import CarsList from './CarsList'
-import { PopularCarDiv, PopularCarHorizontal, PopularCarTitle, PopularCarViewAll } from './styles'
+import { PopularCarDiv, PopularCarHorizontal, PopularCarSection, PopularCarTitle, PopularCarViewAll } from './styles'
 
 const PopularCar = () => {
     return (
-        <div style={{ display: 'flex', flexDirection: "column", margin: '2rem' }}>
+        <PopularCarSection>
             <PopularCarDiv>
                 <PopularCarTitle>Popular Car</PopularCarTitle>
                 <PopularCarViewAll>View All</PopularCarViewAll>
@@ -24,7 +24,7 @@ const PopularCar = () => {
                 <CarCard />
                 <CarCard />
             </PopularCarHorizontal>
-        </div>
+        </PopularCarSection>
     )
 }
 
