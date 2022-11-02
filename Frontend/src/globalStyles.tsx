@@ -29,7 +29,8 @@ export const GlobalStyles = createGlobalStyle`
   html, body, #root {
     width: 100%;
     height: 100%;
-
+    font-family: 'Plus Jakarta Sans';
+    font-size: 16px;
     background-color: var(--color-background);
   }
 
