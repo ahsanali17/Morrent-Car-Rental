@@ -3,8 +3,9 @@ import http from 'http';
 import mongoose from 'mongoose';
 import { config } from './config/config';
 import Logging from './Library/Logging';
+import authorRoutes from './routes/Author';
 
-const router = express();
+const routerServer = express();
 
 /** Connect to Mongoose */
 mongoose.connect(config.mongo.url, { retryWrites: true ,w: 'majority' })
@@ -21,7 +22,7 @@ mongoose.connect(config.mongo.url, { retryWrites: true ,w: 'majority' })
  /** Only start the server if Mongoose connects */
  
  const StartServer = () => {
-  router.use((req, res, next) => {
+  routerServer.use((req, res, next) => {
    /** Log The Request */
    Logging.info(`Incoming => Method [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`);
    
@@ -34,12 +35,12 @@ mongoose.connect(config.mongo.url, { retryWrites: true ,w: 'majority' })
    
   });
   
-  router.use(express.urlencoded({ extended: true}));
-  router.use(express.json());
+  routerServer.use(express.urlencoded({ extended: true}));
+  routerServer.use(express.json());
   
   
   /** Rules of our API */
-  router.use((req, res, next) => {
+  routerServer.use((req, res, next) => {
    res.header('Access-Control-Allow-Origin', '*');
    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
    
@@ -53,20 +54,21 @@ mongoose.connect(config.mongo.url, { retryWrites: true ,w: 'majority' })
   });
   
   /** Routes */
+  routerServer.use('/authors', authorRoutes);
   
   
   /** API Check */
-  router.get('/ping', (req,res,next) => res.status(200).json({ message: 'pong' }));
+  routerServer.get('/ping', (req,res,next) => res.status(200).json({ message: 'pong' }));
   
   /** Error Handling */  
-  router.use((req, res, next) => {
+  routerServer.use((req, res, next) => {
    const error = new Error('Not Found');
    Logging.error(error);
    
    return res.status(404).json({ message: error.message });
   });
   
-  http.createServer(router).listen(config.server.port, () => Logging.info(`Server is running on port ${config.server.port}.`))
+  http.createServer(routerServer).listen(config.server.port, () => Logging.info(`Server is running on port ${config.server.port}.`))
   
  }
  
