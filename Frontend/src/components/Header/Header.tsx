@@ -1,11 +1,18 @@
 import { FC } from "react";
 
-import { HeaderWrapper } from "./styles";
+import { HeaderWrapper, HeaderFeaturesContainer } from "./styles";
+import { NavIcon, BellIcon, LikeIcon, SettingIcon, AvatarIcon } from "../../assets";
 
 const Header: FC = () => {
   return (
     <HeaderWrapper>
-      <h1>Header</h1>
+      <NavIcon/>
+      <HeaderFeaturesContainer>
+        <BellIcon />
+        <LikeIcon />
+        <SettingIcon />
+        <AvatarIcon />
+      </HeaderFeaturesContainer>
     </HeaderWrapper>
   )
 }

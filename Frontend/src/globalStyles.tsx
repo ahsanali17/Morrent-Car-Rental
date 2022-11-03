@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
 
     /*TYPOGRAPHY*/
     --app-font-family: 'Plus Jakarta Sans', sans-serif;
+    --font-weight-heavy: 700;
 
     /*Other Reusables*/
     --border-radius-general: 10px;
