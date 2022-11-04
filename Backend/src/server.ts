@@ -3,12 +3,12 @@ import http from 'http';
 import mongoose from 'mongoose';
 import { config } from './config/config';
 import Logging from './Library/Logging';
-import authorRoutes from './routes/Author';
+import carRoutes from './routes/Car';
 
 const routerServer = express();
 
 /** Connect to Mongoose */
-mongoose.connect(config.mongo.url, { retryWrites: true ,w: 'majority' })
+mongoose.connect(`${config.mongo.url}/car_rental_web_app`, { retryWrites: true ,w: 'majority' })
  .then(() => {
   Logging.info('Connected to mongoDB.');
   StartServer();
@@ -17,7 +17,6 @@ mongoose.connect(config.mongo.url, { retryWrites: true ,w: 'majority' })
   Logging.error('Unable to connect: ');
   Logging.error(error);
  })
- 
  
  /** Only start the server if Mongoose connects */
  
@@ -54,7 +53,7 @@ mongoose.connect(config.mongo.url, { retryWrites: true ,w: 'majority' })
   });
   
   /** Routes */
-  routerServer.use('/authors', authorRoutes);
+  routerServer.use('/cars', carRoutes);
   
   
   /** API Check */
