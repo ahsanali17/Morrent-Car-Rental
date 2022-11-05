@@ -53,6 +53,7 @@ const StartServer = () => {
 
     /** Routes */
     routerServer.use('/cars', carRoutes);
+    // routerServer.use('/user', userRoutes);
 
     /** API Check */
     routerServer.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
