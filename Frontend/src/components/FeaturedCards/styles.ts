@@ -14,7 +14,8 @@ export const FeaturedHorizontal = styled.section`
 `;
 
 export const FeaturedCardsWrapper = styled.div`
-  --sides-padding: calc(var(--spacing-2) - var(--border-radius-general));
+  --sides-padding: calc(var(--spacing-horizontal) - var(--border-radius-general));
+  --small-sides-padding: calc(var(--small-spacing-horizontal) - var(--border-radius-general));
 
   display: grid;
   position: relative;
@@ -22,11 +23,13 @@ export const FeaturedCardsWrapper = styled.div`
   z-index: 5;
   grid-template-columns: repeat(2, 1fr);
   place-content: center;
-  gap: 0 var(--spacing-1);
-  padding: var(--spacing-1) var(--sides-padding);
+  gap: 0 var(--spacing-veritical);
+  padding: var(--spacing-veritical) var(--sides-padding);
 
   @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
     grid-template-columns: 1fr;
+
+    padding: var(--small-spacing-veritical) var(--small-sides-padding);
    }
 `;
 

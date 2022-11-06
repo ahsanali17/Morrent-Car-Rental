@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 const Icon = styled.svg`
   cursor: pointer;
+
+  @media (${({ theme }) => theme.queries.mediumLargeAndDown}) {
+    display: none;
+  }
 `;
 
 const SettingIcon  = () => {

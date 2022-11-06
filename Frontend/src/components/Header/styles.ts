@@ -9,7 +9,7 @@ export const HeaderWrapper = styled.header`
   width: 100%;
   height: 8.62%;
 
-  padding: 0 var(--spacing-2);
+  padding: 0 var(--spacing-horizontal);
   background-color: var(--color-white);
 
   h1 {
@@ -19,6 +19,11 @@ export const HeaderWrapper = styled.header`
     letter-spacing: 1px;
     color: var(--color-blue-primary);
   }
+
+
+  @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
+    padding: 0 var(--small-spacing-horizontal);
+   }
 `;
 
 export const HeaderFeaturesContainer = styled.div`

@@ -46,9 +46,9 @@ export const PickUpDropContainer = styled.div`
 //   grid-template-areas:
 //     'pickup updown-button dropoff'
 //   ;
-//   gap: 0 var(--spacing-1);
+//   gap: 0 var(--spacing-veritical);
 //   width: 100%;
-//   /* padding: 0 var(--spacing-2); */
+//   /* padding: 0 var(--spacing-horizontal); */
 //   border-radius: var(--border-radius-general);
 //   padding-left: 1rem;
 //   padding-right: 1rem;
@@ -68,9 +68,9 @@ export const PickUpDropContainer = styled.div`
 //   grid-template-areas:
 //     'pickup updown-button dropoff'
 //   ;
-//   gap: 0 var(--spacing-1);
+//   gap: 0 var(--spacing-veritical);
 
 //   width: 100%;
-//   padding: 0 var(--spacing-2);
+//   padding: 0 var(--spacing-horizontal);
 //   border-radius: var(--border-radius-general);
 // `;

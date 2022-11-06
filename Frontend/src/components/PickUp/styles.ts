@@ -28,7 +28,7 @@ export const PickUpItem = styled.div`
   height: fit-content;
   grid-template-columns: repeat(3, 1fr);
   place-content: center;
-  gap: 0 var(--spacing-1);
+  gap: 0 var(--spacing-veritical);
   padding: 1rem 0;
 `;
 

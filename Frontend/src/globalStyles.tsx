@@ -16,6 +16,13 @@ export const GlobalStyles = createGlobalStyle`
     --font-weight-medium: 500;
     --font-weight-normal: 500;
 
+    /*SPACING*/
+    --spacing-veritical: 32px;
+    --spacing-horizontal: 64px;
+
+    --small-spacing-veritical: 25px;
+    --small-spacing-horizontal: 32px;
+
     /*Other Reusables*/
     --border-radius-general: 10px;
   }

@@ -51,7 +51,7 @@ export const PopularCarCardsWrapper = styled.div`
   height: fit-content;
   grid-template-columns: repeat(2, 1fr);
   place-content: center;
-  gap: 0 var(--spacing-1);
+  gap: 0 var(--spacing-veritical);
   padding: 2.25% 3.5%;
 `;
 
@@ -159,7 +159,7 @@ export const CarsListItems = styled.div`
 //     grid-template-columns: repeat(1,1fr);
 //   /* grid-template-columns: repeat(auto-fill, 450px); */
 //   width: 100%;
-//   padding: var(--spacing-1) 0;
+//   padding: var(--spacing-veritical) 0;
 //   @media (min-width: 640px) {
 //   }
 //   @media (min-width: 768px) {
