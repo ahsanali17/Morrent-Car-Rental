@@ -1,23 +1,25 @@
 import { FC } from "react";
 
-import { CarsListWrapper } from "./styles";
+import { CarsListWrapper, CarsListItems } from "./styles";
 import { CarCard } from '../';
 
 const CarsList: FC = () => {
   return (
     <CarsListWrapper>
-      <CarCard />  
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
+      <CarsListItems>
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+        <CarCard />
+      </CarsListItems>
     </CarsListWrapper>
   )
 }

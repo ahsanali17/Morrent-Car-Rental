@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Header, FeaturedCards, PickUpDropOff, CarsList, Footer } from '../../components';
+import { Header, FeaturedCards, PickUpDropOff, Footer, PopularCar, RecomendationCar } from '../../components';
 import { HomeWrapper } from './styles';
 
 const Home: FC = () => {
@@ -9,7 +9,8 @@ const Home: FC = () => {
       <Header />
       <FeaturedCards />
       <PickUpDropOff />
-      <CarsList />
+      <PopularCar />
+      <RecomendationCar />
       <Footer />
     </HomeWrapper>
   )

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+
 export const GlobalStyles = createGlobalStyle`
   :root {
     /*MAIN-COLORS*/
@@ -10,7 +11,10 @@ export const GlobalStyles = createGlobalStyle`
 
     /*TYPOGRAPHY*/
     --app-font-family: 'Plus Jakarta Sans', sans-serif;
-    --font-weight-heavy: 700;
+    --font-weight-bold: 700;
+    --font-weight-semi-bold: 600;
+    --font-weight-medium: 500;
+    --font-weight-normal: 500;
 
     /*Other Reusables*/
     --border-radius-general: 10px;

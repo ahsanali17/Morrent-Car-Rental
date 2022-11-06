@@ -28,3 +28,4 @@ export const HeaderFeaturesContainer = styled.div`
 
   padding: var(--padding-top-bottom) 0;
 `;
+
