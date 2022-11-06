@@ -3,10 +3,10 @@ import mongoose from 'mongoose';
 
 import Car from '../models/Car';
 
-const createCar = (req: Request, res: Response, next: NextFunction) => {
+const createCar = async (req: Request, res: Response, next: NextFunction) => {
     const { car_brand, type_car, car_name, seat_capacity, maximum_gasoline } = req.body;
 
-    const car = new Car({
+    const car = await new Car({
         _id: new mongoose.Types.ObjectId(),
         car_brand,
         type_car,
@@ -15,13 +15,14 @@ const createCar = (req: Request, res: Response, next: NextFunction) => {
         maximum_gasoline
     });
 
-    return car
-        .save()
-        .then((car) => res.status(201).json({ car }))
-        .catch((error) => res.status(500).json({ error }));
+    try {
+        car ? res.status(201).json({ car }) : res.status(404).json({ message: 'Car was not created' });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
 };
 
-const oneCar = async (req: Request, res: Response, next: NextFunction) => {
+const findByOneCar = async (req: Request, res: Response, next: NextFunction) => {
     const carId = req.params.carId;
     try {
         const car = await Car.findById(carId);
@@ -66,4 +67,4 @@ const deleteCar = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
-export default { createCar, oneCar, allCars, updateCar, deleteCar };
+export default { createCar, findByOneCar, allCars, updateCar, deleteCar };
