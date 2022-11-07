@@ -41,7 +41,7 @@ export const PickUpDiv = styled.div`
 export const PickUpDiv2 = styled.div`
   border-right: 0;
   margin: 0;
-  &:last-child { border-right: 0;}
+  &:last-child { border-right: 0};
 
   @media (min-width: 640px) {
   }
@@ -64,6 +64,17 @@ export const SelectDiv = styled.div`
 }
 `;
 
+export const PickUpHeaderContainer = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const PickUpHeader = styled.input``;
+
+export const PickUpLabel = styled.label`
+  font-size: 1rem;
+  font-weight: var(--font-weight-semi-bold);
+`;
 export const PickUpTitle = styled.div`
   font-style: normal;
   font-weight: 700;

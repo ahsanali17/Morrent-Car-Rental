@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Icon = styled.svg`
   cursor: pointer;
 
-  @media (${({ theme }) => theme.queries.mediumLargeAndDown}) {
+  @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
     display: none;
   }
 `;

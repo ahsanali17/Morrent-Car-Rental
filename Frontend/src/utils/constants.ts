@@ -5,7 +5,7 @@ const BREAKPOINTS: BREAKPOINTS_TYPES = {
   mediumLarge: 1200,
   medium: 1080,
   mediumSmall: 950,
-  smallMedium: 820,
+  smallMedium: 873,
   small: 580,
   verySmall: 450,
   mini: 350,

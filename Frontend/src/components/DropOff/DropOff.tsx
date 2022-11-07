@@ -1,13 +1,16 @@
 import { FC } from "react";
-import DownArrow from "../icons/DownArrow";
-import Title from "../icons/DropOffTitle";
-import { DropOffDiv, DropOffDiv2, DropOffItem, DropOffTitle, DropOffWrapper, SelectCity, SelectDiv } from "./styles";
+import DownArrow from "../../assets/icons/DownArrow";
+import Title from "../../assets/icons/DropOffTitle";
+import { DropOffHeaderContainer, DropOffHeader, DropOffLabel, DropOffDiv, DropOffDiv2, DropOffItem, DropOffTitle, DropOffWrapper, SelectCity, SelectDiv } from "./styles";
 
 
 const DropOff: FC = () => {
   return (
     <DropOffWrapper>
-      <Title />
+      <DropOffHeaderContainer>
+        <DropOffHeader type="radio" name="choose" value="yes" />
+        <DropOffLabel>Drop-Off</DropOffLabel>
+      </DropOffHeaderContainer>
       <DropOffItem>
         <DropOffDiv>
           <DropOffTitle>Locations</DropOffTitle>

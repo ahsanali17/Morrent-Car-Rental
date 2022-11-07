@@ -22,13 +22,25 @@ export const DropOffContainer = styled.div`
   flex-direction:column;
 `;
 
+export const DropOffHeaderContainer = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const DropOffHeader = styled.input``;
+
+export const DropOffLabel = styled.label`
+  font-size: 1rem;
+  font-weight: var(--font-weight-semi-bold);
+`;
+
 export const DropOffItem = styled.div`
   display: grid;
   width: 100%;
   height: fit-content;
   grid-template-columns: repeat(3, 1fr);
   place-content: center;
-  gap: 0 var(--spacing-veritical);
+  gap: 0 var(--spacing-1);
   padding: 1rem 0;
 `;
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const FooterWrapper = styled.footer`
   height: auto;
   width: 100%;
+
   background-color: var(--color-white);
   @media (min-width: 768px) {
   height: 44%;
@@ -12,14 +13,9 @@ export const FooterWrapper = styled.footer`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1536px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
+  padding: 0 var(calc(--spacing-horizontal + 10px));
   height: 100%;
+  width: 100%;
   /* justify-content: space-between; */
   @media (min-width: 640px) {
     padding-left: 2.9rem;
@@ -95,9 +91,11 @@ export const FooterContent = styled.div`
   max-width: 20rem;
   font-size: 16px;
   line-height: 1.25rem;
+
   @media (min-width: 768px) {
-  width: 50%;
-  font-size: 0.875rem;
+    width: 80%;
+    font-size: 0.875rem;
+    line-height: 2;
   }
 `;
 

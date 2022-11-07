@@ -1,9 +1,9 @@
 import { FC } from "react";
-import CarIcon from "../icons/CarIcon";
-import GasIcon from "../icons/GasIcon";
-import Liked from "../icons/Liked";
-import RentNowBtn from "../icons/RentNowBtn";
-import Users from "../icons/Users";
+import CarIcon from "../../assets/icons/CarIcon";
+import GasIcon from "../../assets/icons/GasIcon";
+import Liked from "../../assets/icons/Liked";
+import RentNowBtn from "../../assets/icons/RentNowBtn";
+import Users from "../../assets/icons/Users";
 
 import {
   Article,

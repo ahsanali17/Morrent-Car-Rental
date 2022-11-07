@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ButtonLightBlueLg from "../ButtonLightBlueLg";
-import PickUpBg2 from "../FeaturedCards/PickUpBg2";
+import { PickUpBg2 } from "../../assets";
 
 import { FeaturedContent, FeaturedContentDesc, FeaturedContentImage, FeaturedContentTitle, FeaturedImage, FeaturedWrapper } from "./styles";
 
