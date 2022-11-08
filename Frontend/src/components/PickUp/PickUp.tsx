@@ -8,7 +8,7 @@ const PickUp: FC = () => {
   return (
     <PickUpWrapper>
       <PickUpHeaderContainer>
-        <PickUpHeader type="radio"/>
+        <PickUpHeader type="radio" checked />
         <PickUpLabel>Pick-Up</PickUpLabel>
       </PickUpHeaderContainer>
       <PickUpItem>

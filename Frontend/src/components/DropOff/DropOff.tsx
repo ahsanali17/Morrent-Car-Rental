@@ -8,7 +8,7 @@ const DropOff: FC = () => {
   return (
     <DropOffWrapper>
       <DropOffHeaderContainer>
-        <DropOffHeader type="radio" name="choose" value="yes" />
+        <DropOffHeader type="radio" checked />
         <DropOffLabel>Drop-Off</DropOffLabel>
       </DropOffHeaderContainer>
       <DropOffItem>

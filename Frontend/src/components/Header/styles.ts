@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.header`
   justify-content: space-between;
   width: 100%;
   height: 8.62%;
+  max-height: 124px;
 
   padding: 0 var(--spacing-horizontal);
   background-color: var(--color-white);
