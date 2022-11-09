@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { config } from './config/config';
 import Logging from './Library/Logging';
 import carRoutes from './routes/Car';
+import stripeRoutes from './routes/Stripe';
 
 const routerServer: Application = express();
 
@@ -53,6 +54,7 @@ const StartServer = () => {
 
     /** Routes */
     routerServer.use('/cars', carRoutes);
+    routerServer.use('/stripe', stripeRoutes);
 
     /** API Check */
     routerServer.get('/ping', (req: Request, res: Response, next: NextFunction) => res.status(200).json({ message: 'pong' }));
