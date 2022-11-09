@@ -1,4 +1,3 @@
-import { boolean } from 'joi';
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface ICars {
@@ -21,7 +20,7 @@ const CarsSchema: Schema = new Schema(
 		seat_capacity: { type: Number, required: true },
 		maximum_gasoline: { type: Number, required: true },
 		daily_rate: { type: Number, required: true },
-		isFavourite:{type:boolean,required:true,default:false}
+		isFavourite:{type : Boolean,required:true,default:false}
 	},
 	{
 		versionKey: false

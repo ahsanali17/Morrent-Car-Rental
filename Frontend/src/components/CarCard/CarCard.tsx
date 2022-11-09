@@ -1,9 +1,11 @@
-import { FC } from "react";
-import CarIcon from "../../assets/icons/CarIcon";
-import GasIcon from "../../assets/icons/GasIcon";
-import Liked from "../../assets/icons/Liked";
-import RentNowBtn from "../../assets/icons/RentNowBtn";
-import Users from "../../assets/icons/Users";
+import { FC, useContext, useEffect, useState } from "react"
+import CarIcon from "../../assets/icons/CarIcon"
+import GasIcon from "../../assets/icons/GasIcon"
+import Liked from "../../assets/icons/Liked"
+import RentNowBtn from "../../assets/icons/RentNowBtn"
+import Users from "../../assets/icons/Users"
+
+import { CarsContext } from "../../contexts/CarContext"
 
 import {
   Article,
@@ -18,9 +20,18 @@ import {
   CardTitle,
   PricePerDay,
   PricePerDaySmall,
-} from "./styles";
+} from "./styles"
 
-const CarCard: FC = () => {
+type CarCardType = {
+  car: {}
+}
+const CarCard = ({ car }: CarCardType) => {
+  const [isFavourite, setIsFavourite] = useState<boolean>(false)
+  const context = useContext(CarsContext)
+  const { addToFavourite } = context
+
+  useEffect(() => {})
+
   return (
     <CarCardWrapper>
       <Article>
@@ -49,14 +60,16 @@ const CarCard: FC = () => {
         </CardRow3>
         <CardRow4>
           <div>
-            <PricePerDay>$99.00/<PricePerDaySmall>day</PricePerDaySmall></PricePerDay>
+            <PricePerDay>
+              $99.00/<PricePerDaySmall>day</PricePerDaySmall>
+            </PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
           <RentNowBtn />
         </CardRow4>
       </Article>
     </CarCardWrapper>
-  );
-};
+  )
+}
 
-export default CarCard;
+export default CarCard
