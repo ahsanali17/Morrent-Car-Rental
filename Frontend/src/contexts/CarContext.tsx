@@ -146,7 +146,7 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
     //RTKQ hook to update the backend model to patch
     const updatedCar = state.cars.filter((car) => id == car._id)
     const response = await fetch(`/update/${id}`, {
-      method: "POST",
+      method: "PATCH",
       body: JSON.stringify(updatedCar[0]),
       headers: {
         "Content-Type": "application/json",
