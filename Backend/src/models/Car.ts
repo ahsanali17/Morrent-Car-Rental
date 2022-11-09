@@ -6,6 +6,7 @@ export interface ICars {
 	car_name: string;
 	seat_capacity: number;
 	maximum_gasoline: number;
+	daily_rate: number,
 }
 
 export interface ICarsModel extends ICars, Document {}
@@ -16,7 +17,8 @@ const CarsSchema: Schema = new Schema(
 		type_car: { type: String, required: true },
 		car_name: { type: String, required: true, unique: true },
 		seat_capacity: { type: Number, required: true },
-		maximum_gasoline: { type: Number, required: true }
+		maximum_gasoline: { type: Number, required: true },
+		daily_rate: { type: Number, required: true },
 	},
 	{
 		versionKey: false
