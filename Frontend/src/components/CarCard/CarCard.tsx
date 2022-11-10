@@ -1,24 +1,7 @@
 import { FC } from "react";
-import CarIcon from "../../assets/icons/CarIcon";
-import GasIcon from "../../assets/icons/GasIcon";
-import Liked from "../../assets/icons/Liked";
-import RentNowBtn from "../../assets/icons/RentNowBtn";
-import Users from "../../assets/icons/Users";
 
-import {
-  Article,
-  CarCardWrapper,
-  CardRow1,
-  CardRow2,
-  CardRow3,
-  CardRow4,
-  CardSpesification,
-  CardSpesificationDiv,
-  CardTag,
-  CardTitle,
-  PricePerDay,
-  PricePerDaySmall,
-} from "./styles";
+import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons';
+import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall } from "./styles";
 
 const CarCard: FC = () => {
   return (
