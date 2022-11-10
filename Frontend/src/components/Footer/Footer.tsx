@@ -1,5 +1,72 @@
 import { FC } from "react";
+
 import { Box, Container, FooterBottom, FooterBottomLinkDiv, FooterContent, FooterLink, FooterLinkItems, FooterListTtem, FooterLogoDiv, FooterNav, FooterTitle, FooterWrapper, LogoContainer, NavIcon, SpanBlock } from "./styles";
+
+const footerLinks = [
+  {
+    title: "About",
+    sublinks: [
+      {
+        name: "How it works",
+        link: "/#Howitworks",
+      },
+      {
+        name: "Featured",
+        link: "/#Featured",
+      },
+      {
+        name: "Partnership",
+        link: "/#Partnership",
+      },
+      {
+        name: "Bussiness Relation",
+        link: "/#BussinessRelation",
+      },
+    ],
+  },
+  {
+    title: "Community",
+    sublinks: [
+      {
+        name: "Events",
+        link: "/#Events",
+      },
+      {
+        name: "Blog",
+        link: "/#Blog",
+      },
+      {
+        name: "Podcast",
+        link: "/#Podcast",
+      },
+      {
+        name: "Invite a friend",
+        link: "/#Inviteafriend",
+      },
+    ],
+  },
+  {
+    title: "Socials",
+    sublinks: [
+      {
+        name: "Discord",
+        link: "/#Discord",
+      },
+      {
+        name: "Instagram",
+        link: "/#Instagram",
+      },
+      {
+        name: "Twitter",
+        link: "/#Twitter",
+      },
+      {
+        name: "Facebook",
+        link: "/#Facebook",
+      },
+    ],
+  }
+]
 
 const Footer: FC = () => {
   return (
@@ -28,33 +95,16 @@ const Footer: FC = () => {
             </FooterContent>
           </FooterLogoDiv>
           <FooterLinkItems>
-            <FooterListTtem>
-              <FooterTitle>About</FooterTitle>
-              <FooterNav aria-label="Footer Nav">
-                <FooterLink href="#link">How it works</FooterLink>
-                <FooterLink href="#link">Featured</FooterLink>
-                <FooterLink href="#link">Partnership</FooterLink>
-                <FooterLink href="#link">Bussiness Relation</FooterLink>
-              </FooterNav>
-            </FooterListTtem>
-            <FooterListTtem>
-              <FooterTitle>Community</FooterTitle>
-              <FooterNav aria-label="Footer Nav">
-                <FooterLink href="#link">Events</FooterLink>
-                <FooterLink href="#link">Blog</FooterLink>
-                <FooterLink href="#link">Podcast</FooterLink>
-                <FooterLink href="#link">Invite a friend</FooterLink>
-              </FooterNav>
-            </FooterListTtem>
-            <FooterListTtem>
-              <FooterTitle>Socials</FooterTitle>
-              <FooterNav aria-label="Footer Nav">
-                <FooterLink href="#link">Discord</FooterLink>
-                <FooterLink href="#link">Instagram</FooterLink>
-                <FooterLink href="#link">Twitter</FooterLink>
-                <FooterLink href="#link">Facebook</FooterLink>
-              </FooterNav>
-            </FooterListTtem>
+            {
+              footerLinks.map((link) => (
+                <FooterListTtem key={link.title}>
+                  <FooterTitle>{link.title}</FooterTitle>
+                  <FooterNav aria-label="Footer Nav">
+                    {link.sublinks.map((item) => (<FooterLink key={item.name} href={item.link}> {item.name} </FooterLink>))}
+                  </FooterNav>
+                </FooterListTtem>
+              ))
+            }
           </FooterLinkItems>
         </Box>
         <hr />

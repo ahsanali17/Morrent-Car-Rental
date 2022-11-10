@@ -11,4 +11,17 @@ export const UpDownButtonWrapper = styled.div`
     justify-self: center;
     justify-content: center;
     align-items: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    @media (min-width: 768px) {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;

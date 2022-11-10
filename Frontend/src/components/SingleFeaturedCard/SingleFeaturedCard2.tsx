@@ -1,8 +1,12 @@
 import { FC } from "react";
+
+import { FeaturedContent, FeaturedContentDesc, FeaturedContentImage, FeaturedContentTitle, FeaturedImage, FeaturedWrapper } from "./styles";
+
 import ButtonLightBlueLg from "../ButtonLightBlueLg";
 import { PickUpBg2 } from "../../assets";
 
-import { FeaturedContent, FeaturedContentDesc, FeaturedContentImage, FeaturedContentTitle, FeaturedImage, FeaturedWrapper } from "./styles";
+import car from "/src/assets/cars/car3.png";
+
 
 const SingleFeaturedCard2: FC = () => {
     return (
@@ -17,7 +21,7 @@ const SingleFeaturedCard2: FC = () => {
                 </FeaturedContentDesc>
                 <ButtonLightBlueLg />
                 <FeaturedContentImage>
-                    <FeaturedImage src="./cars/car3.png" />
+                    <FeaturedImage src={car} />
                 </FeaturedContentImage>
             </FeaturedContent>
         </FeaturedWrapper>

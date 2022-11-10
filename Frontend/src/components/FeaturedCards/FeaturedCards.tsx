@@ -1,9 +1,9 @@
 import { FC } from "react";
 
 import { FeaturedCardsWrapper, FeaturedHorizontal, Input, SearchSettings, SearchSettingsContainer } from "./styles";
+
 import { SingleFeaturedCard, SingleFeaturedCard2 } from '../';
-import SearchIcon from "../../assets/icons/SearchIcon";
-import Filter from "../../assets/icons/Filter";
+import { SearchIcon, Filter } from "../../assets/icons";
 
 const FeaturedCards: FC = () => {
   return (

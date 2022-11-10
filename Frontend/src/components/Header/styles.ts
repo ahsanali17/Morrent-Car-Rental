@@ -21,10 +21,9 @@ export const HeaderWrapper = styled.header`
     color: var(--color-blue-primary);
   }
 
-
   @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
     padding: 0 var(--small-spacing-horizontal);
-   }
+  }
 `;
 
 export const HeaderFeaturesContainer = styled.div`
@@ -34,4 +33,3 @@ export const HeaderFeaturesContainer = styled.div`
 
   padding: var(--padding-top-bottom) 0;
 `;
-

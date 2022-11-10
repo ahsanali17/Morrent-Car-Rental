@@ -4,16 +4,15 @@ import { PopularCarDiv, PopularCarHorizontal, PopularCarSection, PopularCarTitle
 
 import CarCard from '../CarCard/CarCard'
 
-const PopularCar = () => {
+const CarsForRent = () => {
     return (
+
         <PopularCarSection>
             <PopularCarDiv>
-                <PopularCarTitle>Popular Car</PopularCarTitle>
+                <PopularCarTitle>Cars for Rent</PopularCarTitle>
                 <PopularCarViewAll>View All</PopularCarViewAll>
             </PopularCarDiv>
             <PopularCarHorizontal>
-                {/* <CarsList /> */}
-
                 {/* dummy content */}
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((car) => (
                     <CarCard car={car} />
@@ -23,4 +22,4 @@ const PopularCar = () => {
     )
 }
 
-export default PopularCar
+export default CarsForRent

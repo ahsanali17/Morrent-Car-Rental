@@ -1,8 +1,12 @@
 import { FC } from "react";
+
+import { FeaturedContent, FeaturedContentDesc, FeaturedContentImage, FeaturedContentTitle, FeaturedImage, FeaturedWrapper } from "./styles";
+
 import ButtonBlueLg from "../ButtonBlueLg";
 import { PickUpBg } from "../../assets";
 
-import { FeaturedContent, FeaturedContentDesc, FeaturedContentImage, FeaturedContentTitle, FeaturedImage, FeaturedWrapper } from "./styles";
+import car from "/src/assets/cars/car2.png";
+
 
 const SingleFeaturedCard: FC = () => {
   return (
@@ -16,7 +20,7 @@ const SingleFeaturedCard: FC = () => {
           <h3>Ease of doing a car rental safely and reliably. Of course at a low price.</h3></FeaturedContentDesc>
         <ButtonBlueLg />
         <FeaturedContentImage>
-          <FeaturedImage src="./cars/car2.png" />
+          <FeaturedImage src={car} />
         </FeaturedContentImage>
       </FeaturedContent>
     </FeaturedWrapper>

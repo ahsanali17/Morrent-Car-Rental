@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 import { HeaderWrapper, HeaderFeaturesContainer } from "./styles";
 import { NavIcon, BellIcon, LikeIcon, SettingIcon, AvatarIcon } from "../../assets";
@@ -6,12 +7,14 @@ import { NavIcon, BellIcon, LikeIcon, SettingIcon, AvatarIcon } from "../../asse
 const Header: FC = () => {
   return (
     <HeaderWrapper>
-      <NavIcon/>
+      <NavIcon />
       <HeaderFeaturesContainer>
         <BellIcon />
         <LikeIcon />
         <SettingIcon />
-        <AvatarIcon />
+        <Link to="/profile">
+          <AvatarIcon />
+        </Link>
       </HeaderFeaturesContainer>
     </HeaderWrapper>
   )

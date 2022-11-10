@@ -1,11 +1,4 @@
 import { FC, useContext, useEffect, useState } from "react"
-import CarIcon from "../../assets/icons/CarIcon"
-import GasIcon from "../../assets/icons/GasIcon"
-import Liked from "../../assets/icons/Liked"
-import RentNowBtn from "../../assets/icons/RentNowBtn"
-import Users from "../../assets/icons/Users"
-
-import { CarsContext } from "../../contexts/CarContext"
 
 import {
   Article,
@@ -22,6 +15,12 @@ import {
   PricePerDaySmall,
 } from "./styles"
 
+import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons/'
+
+import { CarsContext } from "../../contexts/CarContext"
+
+import carImg from "/src/assets/cars/car.png"
+
 type CarCardType = {
   car: {}
 }
@@ -30,8 +29,22 @@ const CarCard = ({ car }: CarCardType) => {
   const context = useContext(CarsContext)
   const { addToFavourite } = context
 
-  useEffect(() => {})
+  useEffect(() => { })
 
+  const features = [
+    {
+      icon: <GasIcon />,
+      title: "90L"
+    },
+    {
+      icon: <CarIcon />,
+      type: "Manual"
+    },
+    {
+      icon: <Users />,
+      qty: "2 People"
+    },
+  ]
   return (
     <CarCardWrapper>
       <Article>
@@ -42,21 +55,18 @@ const CarCard = ({ car }: CarCardType) => {
           <Liked />
         </CardRow1>
         <CardRow2>
-          <img src="./cars/car.png" />
+          <img src={carImg} />
         </CardRow2>
         <CardRow3>
-          <CardSpesificationDiv>
-            <GasIcon />
-            <CardSpesification>90L</CardSpesification>
-          </CardSpesificationDiv>
-          <CardSpesificationDiv>
-            <CarIcon />
-            <CardSpesification>Manual</CardSpesification>
-          </CardSpesificationDiv>
-          <CardSpesificationDiv>
-            <Users />
-            <CardSpesification>2 People</CardSpesification>
-          </CardSpesificationDiv>
+          {
+            features.map((feature) => (
+              <CardSpesificationDiv key={feature.type}>
+                {feature.icon}
+                <CardSpesification>{feature.type}</CardSpesification>
+                <CardSpesification>{feature.qty}</CardSpesification>
+              </CardSpesificationDiv>
+            ))
+          }
         </CardRow3>
         <CardRow4>
           <div>
