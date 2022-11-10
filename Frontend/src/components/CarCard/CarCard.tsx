@@ -1,9 +1,19 @@
-import { FC } from "react";
+import { useContext, useEffect, useState } from "react"
+import { CarsContext } from "../../contexts/CarContext"
 
 import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons';
-import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall } from "./styles";
+import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall } from "./styles"
 
-const CarCard: FC = () => {
+type CarCardType = {
+  car: {}
+}
+const CarCard = ({ car }: CarCardType) => {
+  const [isFavourite, setIsFavourite] = useState<boolean>(false)
+  const context = useContext(CarsContext)
+  const { addToFavourite } = context
+
+  useEffect(() => {})
+
   return (
     <CarCardWrapper>
       <Article>
@@ -32,14 +42,16 @@ const CarCard: FC = () => {
         </CardRow3>
         <CardRow4>
           <div>
-            <PricePerDay>$99.00/<PricePerDaySmall>day</PricePerDaySmall></PricePerDay>
+            <PricePerDay>
+              $99.00/<PricePerDaySmall>day</PricePerDaySmall>
+            </PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
           <RentNowBtn />
         </CardRow4>
       </Article>
     </CarCardWrapper>
-  );
-};
+  )
+}
 
-export default CarCard;
+export default CarCard
