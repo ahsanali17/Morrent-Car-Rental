@@ -8,3 +8,6 @@ export { default as PickupTitle } from './PickupTitle';
 export { default as RentNowBtn } from './RentNowBtn';
 export { default as SearchIcon } from './SearchIcon';
 export { default as Users } from './Users';
+export { default as UploadIcon } from './UploadIcon';
+export { default as DocumentIcon } from './DocumentIcon';
+export { default as SecuritySafety } from './SecuritySafety';

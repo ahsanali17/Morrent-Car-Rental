@@ -15,7 +15,7 @@ import {
   PricePerDaySmall,
 } from "./styles"
 
-import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons/'
+import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons'
 
 import { CarsContext } from "../../contexts/CarContext"
 

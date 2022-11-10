@@ -5,6 +5,7 @@ import profileImg from '/src/assets/img/profile-pic.png'
 
 import { MdModeEditOutline } from 'react-icons/md';
 import { CarsForRent, RentedCars } from '../CarsList';
+import { Link } from 'react-router-dom';
 // import { RentedCars, CarsForRent } from '../CarCard';
 
 const ProfileComponent = () => {
@@ -28,7 +29,8 @@ const ProfileComponent = () => {
             <RentedCars />
             <CarsForRent />
             <MoreDiv>
-                <MoreBtn>Add More Cars for Rent</MoreBtn>
+                <Link to='/add-car' style={{ textDecoration: 'none' }}><MoreBtn>Add More Cars for Rent</MoreBtn></Link>
+
             </MoreDiv>
         </>
     )

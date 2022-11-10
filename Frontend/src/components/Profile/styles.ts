@@ -52,6 +52,7 @@ export const MoreBtn = styled.div`
   font-size: 14px;
   font-weight: 600;
   color: white;
+  cursor: pointer;
   @media (min-width: 640px) {
   }
   @media (min-width: 768px) {
@@ -111,6 +112,7 @@ export const Button = styled.div`
   opacity: 0.4;
   right: 50px;
   font-size: 14px;
+    top: 8rem;
   }
   @media (min-width: 1024px) {
   }

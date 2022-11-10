@@ -15,3 +15,5 @@ export { default as Footer } from './Footer/Footer';
 export { default as ButtonBlueLg } from './ButtonBlueLg';
 export { default as ButtonLightBlueLg } from './ButtonLightBlueLg';
 export { default as ProfileComponent } from './Profile/Profile';
+export { default as Confirmation } from './Confirmation/Confirmation';
+export { default as AddCarForm } from './AddCarForm/AddCarForm';
