@@ -1,23 +1,22 @@
-import { FC } from "react";
+import { FC,useContext } from "react";
 
-import { CarsListWrapper } from "./styles";
+import { CarsListWrapper, CarsListItems } from "./styles";
 import { CarCard } from '../';
+import { CarsContext } from "../../contexts/CarContext"
+
+
 
 const CarsList: FC = () => {
+  const context = useContext(CarsContext)
+
+  const { cars } = context
   return (
     <CarsListWrapper>
-      <CarCard />  
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
-      <CarCard />
+      <CarsListItems>
+      {cars.map((car) => (
+        <CarCard car={car} />
+      ))}
+      </CarsListItems>
     </CarsListWrapper>
   )
 }

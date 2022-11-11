@@ -1,12 +1,13 @@
-import express from 'express';
+import express, { Application, Request, Response, NextFunction } from 'express';
 import http from 'http';
 import mongoose from 'mongoose';
 
 import { config } from './config/config';
 import Logging from './Library/Logging';
 import carRoutes from './routes/Car';
+import stripeRoutes from './routes/Stripe';
 
-const routerServer = express();
+const routerServer: Application = express();
 
 /** Connect to Mongoose */
 mongoose
@@ -23,7 +24,7 @@ mongoose
 /** Only start the server if Mongoose connects */
 
 const StartServer = () => {
-    routerServer.use((req, res, next) => {
+    routerServer.use((req: Request, res: Response, next: NextFunction ) => {
         /** Log The Request */
         Logging.info(`Incoming => Method [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`);
 
@@ -39,7 +40,7 @@ const StartServer = () => {
     routerServer.use(express.json());
 
     /** Rules of our API */
-    routerServer.use((req, res, next) => {
+    routerServer.use((req: Request, res: Response, next: NextFunction) => {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
@@ -53,12 +54,13 @@ const StartServer = () => {
 
     /** Routes */
     routerServer.use('/cars', carRoutes);
+    routerServer.use('/stripe', stripeRoutes);
 
     /** API Check */
-    routerServer.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));
+    routerServer.get('/ping', (req: Request, res: Response, next: NextFunction) => res.status(200).json({ message: 'pong' }));
 
     /** Error Handling */
-    routerServer.use((req, res, next) => {
+    routerServer.use((req: Request, res: Response, next: NextFunction) => {
         const error = new Error('Not Found');
         Logging.error(error);
 
