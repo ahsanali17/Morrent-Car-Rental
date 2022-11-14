@@ -5,22 +5,12 @@ import Liked from "../../assets/icons/Liked";
 import RentNowBtn from "../../assets/icons/RentNowBtn";
 import Users from "../../assets/icons/Users";
 
-import {
-  Article,
-  CarCardWrapper,
-  CardRow1,
-  CardRow2,
-  CardRow3,
-  CardRow4,
-  CardSpesification,
-  CardSpesificationDiv,
-  CardTag,
-  CardTitle,
-  PricePerDay,
-  PricePerDaySmall,
-} from "./styles";
+import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall, RentNowButton} from "./styles";
+import { useModalContext } from "../../contexts/ModalContext";
 
 const CarCard: FC = () => {
+  const { toggleModal } = useModalContext();
+
   return (
     <CarCardWrapper>
       <Article>
@@ -52,7 +42,7 @@ const CarCard: FC = () => {
             <PricePerDay>$99.00/<PricePerDaySmall>day</PricePerDaySmall></PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
-          <RentNowBtn />
+          <RentNowButton>Rent Now</RentNowButton>
         </CardRow4>
       </Article>
     </CarCardWrapper>
