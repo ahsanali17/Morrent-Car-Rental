@@ -11,6 +11,7 @@ export const StyledModal = Modal.styled`
 
   display: flex;
   align-items: center;
+  box-shadow: 0px 0px 41px 23px rgba(0,0,0,0.75);
   flex-direction: column;
 
   @media(${props => props.theme.queries.mediumLargeAndDown}) {
@@ -62,7 +63,10 @@ type ButtonColor = { proceed: boolean };
 export const Button = styled.button`
   width: 100px;
   height: 40px;
-  color: ${(props: ButtonColor) => props.proceed ? `var(--color-blue-primary)` : `red`};
+  border: none;
+  border-radius: 4px;
 
+  color: var(--color-white);
+  background-color: ${(props: ButtonColor) => props.proceed ? `var(--color-confirm)` : `var(--color-cancel)`};
   cursor: pointer;
 `;
