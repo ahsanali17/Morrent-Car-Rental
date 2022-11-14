@@ -1,3 +1,4 @@
+import { ActionCreator } from "@reduxjs/toolkit"
 import React, { createContext, useReducer, useEffect, useState } from "react"
 //done
 enum ActionKind {
@@ -7,16 +8,19 @@ enum ActionKind {
   Is_Favourite = " IS_FAVOURITE",
   Create_Car = "CREATE_CAR",
   Delete_Car = "DELETE_CAR",
+  Add_to_Query = "ADD_TO_QUERY",
+  Add_To_Search = "ADD_TO_SEARCH",
 }
 
 //car object type
-type CarType = {
+export type CarType = {
   _id: number
   car_brand: string
   type_car: string
   car_name: string
   seat_capacity: number
   maximum_gasoline: number
+  daily_rate: number
   isFavourite: boolean
 }
 
@@ -24,12 +28,16 @@ type CarType = {
 export type State = {
   cars: CarType[]
   cartItems: CarType[]
+  searchItems: CarType[]
+  query: string
 }
 
 //--
 const initialState: State = {
   cars: [],
   cartItems: [],
+  searchItems: [],
+  query: "",
 }
 
 type CarsContextProviderProps = {
@@ -40,18 +48,35 @@ type CarsContextProviderProps = {
 type CarsContextType = {
   cars: CarType[]
   cartItems: CarType[]
+  searchItems: CarType[]
+  query: string
   addToFavourite: (id: number) => void
   createCar: (car: CarType, e: React.FormEvent<HTMLInputElement>) => void
   deleteCar: (id: number) => void
+  addToQuery: (q: string) => void
+  addToSearch: (s: CarType[]) => void
 }
 
 const CarsContext = createContext<CarsContextType>({} as CarsContextType)
 const { Provider } = CarsContext
 
-type Action = {
-  type: ActionKind
+type QueryAction = {
+  type: ActionKind.Add_to_Query
+  payload: string
+}
+
+type CarAction = {
+  type:
+    | ActionKind.AddToCart
+    | ActionKind.Create_Car
+    | ActionKind.Delete_Car
+    | ActionKind.GetAllCars
+    | ActionKind.GetOneCar
+    | ActionKind.Is_Favourite
+    | ActionKind.Add_To_Search
   payload: CarType[]
 }
+type Action = CarAction | QueryAction
 
 function carsReducer(state: State, action: Action): State {
   switch (action.type) {
@@ -67,6 +92,11 @@ function carsReducer(state: State, action: Action): State {
     //update the cars array with isFavourite value
     case ActionKind.Is_Favourite:
       return { ...state, cars: action.payload }
+    case ActionKind.Add_To_Search:
+      return { ...state, searchItems: action.payload }
+    case ActionKind.Add_to_Query:
+      return { ...state, query: action.payload }
+
     default:
       return state
   }
@@ -79,7 +109,7 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
   useEffect(() => {
     const fetchcars = async (): Promise<void> => {
       try {
-        const response = await fetch("http://localhost:4000/get/")
+        const response = await fetch("http://localhost:4000/get")
         const data = await response.json()
         if (response.ok) {
           dispatch({ type: ActionKind.GetAllCars, payload: data })
@@ -160,9 +190,19 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
     }
   }
 
+  const addToQuery = (q: string) => {
+    dispatch({ type: ActionKind.Add_to_Query, payload: q })
+  }
+
+  const addToSearch = (s: CarType[]) => {
+    dispatch({ type: ActionKind.Add_To_Search, payload: s })
+  }
+
   return (
     <div>
-      <Provider value={{ ...state, addToFavourite, createCar, deleteCar }}>
+      <Provider
+        value={{ ...state, addToFavourite, createCar, deleteCar, addToQuery,addToSearch }}
+      >
         {children}
       </Provider>
     </div>

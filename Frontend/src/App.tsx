@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components"
 
 import { GlobalStyles } from "./globalStyles"
 import { Home } from "./pages"
+import SearchFilter from "./pages/SearchFilter/SearchFilter"
 import { theme } from "./types/theme-type"
 
 const App: FC = () => {
@@ -17,7 +18,7 @@ const App: FC = () => {
           </Routes>
 
           <Routes>
-            <Route path="/search/:q" />
+            <Route path="/search/" element={<SearchFilter/>}/>
           </Routes>
         </Router>
       </ThemeProvider>
