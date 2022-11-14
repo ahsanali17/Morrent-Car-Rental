@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import http from 'http';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import { config } from './config/config';
 import Logging from './Library/Logging';
@@ -38,6 +39,7 @@ const StartServer = () => {
 
     routerServer.use(express.urlencoded({ extended: true }));
     routerServer.use(express.json());
+    routerServer.use(cors());
 
     /** Rules of our API */
     routerServer.use((req: Request, res: Response, next: NextFunction) => {
