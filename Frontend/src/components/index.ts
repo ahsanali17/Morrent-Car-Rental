@@ -11,5 +11,6 @@ export { default as PopularCar } from './CarsList/PopularCar';
 export { default as RecomendationCar } from './CarsList/RecomendationCar';
 export { default as CarCard } from './CarCard/CarCard';
 export { default as Footer } from './Footer/Footer';
+export { default as PurchaseConfirmation } from './PurchaseConfirmation/PurchaseConfirmation';
 export { default as ButtonBlueLg } from './ButtonBlueLg';
 export { default as ButtonLightBlueLg } from './ButtonLightBlueLg';
