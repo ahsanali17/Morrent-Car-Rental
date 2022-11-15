@@ -56,4 +56,4 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
 	}
 };
 
-export default { createUser, getOneUser, getAllUsers };
+export default { getOneUser, getAllUsers };
