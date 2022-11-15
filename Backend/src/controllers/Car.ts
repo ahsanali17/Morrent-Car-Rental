@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import Car from '../models/Car';
 
 const createCar = async (req: Request, res: Response, next: NextFunction) => {
-	const { car_brand, type_car, car_name, seat_capacity, maximum_gasoline } = req.body;
+	const { car_brand, type_car, car_name, seat_capacity, maximum_gasoline, daily_rate,isFavourite } = req.body;
 
 	try {
 		const car = new Car({
@@ -13,7 +13,9 @@ const createCar = async (req: Request, res: Response, next: NextFunction) => {
 			type_car,
 			car_name,
 			seat_capacity,
-			maximum_gasoline
+			maximum_gasoline,
+			daily_rate,
+			isFavourite
 		});
 
 		await car.save();
