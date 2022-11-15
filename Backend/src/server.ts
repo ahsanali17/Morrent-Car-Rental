@@ -10,9 +10,14 @@ import { config } from './config/config';
 import passportSetup from './config/passport';
 import Logging from './Library/Logging';
 import carRoutes from './routes/Car';
-// import authRoutes from './routes/Auth';
+import userRoutes from './routes/User';
+import authRoutes from './routes/Auth';
 
 const routerServer = express();
+
+routerServer.use(bodyparser.json());
+routerServer.use(bodyparser.urlencoded({ extended: true }));
+
 routerServer.use(
 	session({
 		secret: 'black cat',
@@ -21,26 +26,10 @@ routerServer.use(
 		store: MongoStore.create({ mongoUrl: config.mongo.url })
 	})
 );
-const PassportSetup = passportSetup();
 
 routerServer.use(passport.initialize());
 routerServer.use(passport.session());
-
-routerServer.use(bodyparser.json());
-routerServer.use(bodyparser.urlencoded({ extended: true }));
-
-routerServer.get('/auth', (req, res) => {
-	res.send('<a href="/auth/google">Authenticate with Google</a>');
-});
-
-routerServer.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
-
-routerServer.get(
-	'/google/callback',
-	passport.authenticate('google', {
-		successRedirect: 'http://localhost:5173/'
-	})
-);
+passportSetup();
 
 /** Connect to Mongoose */
 mongoose
@@ -87,8 +76,8 @@ const StartServer = () => {
 
 	/** Routes */
 	routerServer.use('/cars', carRoutes);
-	// routerServer.use('/user', userRoutes);
-	// routerServer.use('/auth', authRoutes);
+	routerServer.use('/users', userRoutes);
+	routerServer.use('/', authRoutes);
 
 	/** API Check */
 	routerServer.get('/ping', (req, res, next) => res.status(200).json({ message: 'pong' }));

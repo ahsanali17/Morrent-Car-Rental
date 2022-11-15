@@ -1,14 +1,14 @@
+import express from 'express';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import strategy from 'passport-google-oauth20';
 import dotenv from 'dotenv';
 
+import User from '../models/User';
+
 dotenv.config();
 
 const GoogleStrategy = strategy.Strategy;
-
-import User from '../models/User';
-
 const googleClient = process.env.GOOGLE_CLIENT_ID || '';
 const googleSecret = process.env.GOOGLE_SECRET || '';
 
@@ -24,9 +24,10 @@ const passportSetup = () => {
 				callbackURL: 'http://localhost:9090/google/callback',
 				passReqToCallback: true
 			},
-			async (accessToken: any, refreshToken: any, profile: any, done: any) => {
+			async (req, accessToken: any, refreshToken: any, profile: any, done: any) => {
+				console.log(profile);
 				const newUser = {
-					id: mongoose.Types.ObjectId,
+					_id: new mongoose.Types.ObjectId(),
 					googleId: profile.id,
 					displayName: profile.displayName,
 					firstName: profile.name.givenName,
@@ -35,12 +36,13 @@ const passportSetup = () => {
 				};
 				try {
 					let user = await User.findOne({ googleId: profile.id });
+					console.log('User was found in db', user?.displayName);
 
-					// TODO: Problem with the error im getting about _id might be here, I should consider creating a controller to make it create a new user
 					if (user) {
 						done(null, user);
 					} else {
 						user = await User.create(newUser);
+						await user?.save();
 						done(null, user);
 					}
 				} catch (error) {
@@ -55,7 +57,7 @@ const passportSetup = () => {
 	});
 
 	passport.deserializeUser((id, done) => {
-		User.findById(id, (err: any, user: boolean | Express.User | null | undefined) => done(err, user));
+		User.findById(id, (err: any, user: Express.User) => done(err, user));
 	});
 };
 export default passportSetup;

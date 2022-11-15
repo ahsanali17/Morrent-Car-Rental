@@ -11,10 +11,11 @@ export interface IUser {
 export interface IUserModel extends IUser, Document {}
 
 const UserSchema: Schema = new Schema({
-	googleId: { type: String, required: true },
-	displayName: { type: String, required: true },
-	firstName: { type: String, required: true },
-	lastName: { type: String, required: true },
+	_id: { type: String },
+	googleId: { type: String },
+	displayName: { type: String },
+	firstName: { type: String },
+	lastName: { type: String },
 	image: { type: String },
 	created_at: { type: Date, default: Date.now }
 });
