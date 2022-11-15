@@ -4,7 +4,7 @@ export { default as SingleFeaturedCard } from './SingleFeaturedCard/SingleFeatur
 export { default as SingleFeaturedCard2 } from './SingleFeaturedCard/SingleFeaturedCard2';
 export { default as PickUpDropOff } from './PickUpDropOff/PickUpDropOff';
 export { default as PickUp } from './PickUp/PickUp';
-export { default as UpDownButton } from './UpDownButton/UpDownButton';
+export { default as LocationSwitcher } from './LocationSwitcher/LocationSwitcher';
 export { default as DropOff } from './DropOff/DropOff';
 export { default as CarsList } from './CarsList/CarsList';
 export { default as PopularCar } from './CarsList/PopularCar';
