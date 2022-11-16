@@ -4,8 +4,13 @@ import { CarsListWrapper, CarsListItems } from "./styles"
 import { CarCard } from "../"
 import { CarsContext, CarType } from "../../contexts/CarContext"
 
+
+type carListProps={
+  searchItems?:CarType[]
+}
+
 //  I am trying assert
-const CarsList = ({ searchItems }: any) => {
+const CarsList = ({ searchItems }: carListProps) => {
   const context = useContext(CarsContext)
 
   const { cars } = context

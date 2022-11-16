@@ -10,6 +10,7 @@ enum ActionKind {
   Delete_Car = "DELETE_CAR",
   Add_to_Query = "ADD_TO_QUERY",
   Add_To_Search = "ADD_TO_SEARCH",
+  Is_Search_Active="IS_SEARCH_ACTIVE"
 }
 
 //car object type
@@ -21,7 +22,7 @@ export type CarType = {
   seat_capacity: number
   maximum_gasoline: number
   daily_rate: number
-  isFavourite: boolean
+  isFavourite: Boolean
 }
 
 // Array of objects for cars + array of object of cars to be added in cart
@@ -30,6 +31,7 @@ export type State = {
   cartItems: CarType[]
   searchItems: CarType[]
   query: string
+  isSearchActive:Boolean
 }
 
 //--
@@ -38,6 +40,7 @@ const initialState: State = {
   cartItems: [],
   searchItems: [],
   query: "",
+  isSearchActive:false
 }
 
 type CarsContextProviderProps = {
@@ -50,11 +53,13 @@ type CarsContextType = {
   cartItems: CarType[]
   searchItems: CarType[]
   query: string
+  isSearchActive:Boolean
   addToFavourite: (id: number) => void
   createCar: (car: CarType, e: React.FormEvent<HTMLInputElement>) => void
   deleteCar: (id: number) => void
   addToQuery: (q: string) => void
   addToSearch: (s: CarType[]) => void
+  searchActive: (b: Boolean) => void
 }
 
 const CarsContext = createContext<CarsContextType>({} as CarsContextType)
@@ -64,7 +69,10 @@ type QueryAction = {
   type: ActionKind.Add_to_Query
   payload: string
 }
-
+type SearchActiveAction={
+  type:ActionKind.Is_Search_Active
+  payload:Boolean
+}
 type CarAction = {
   type:
     | ActionKind.AddToCart
@@ -76,7 +84,7 @@ type CarAction = {
     | ActionKind.Add_To_Search
   payload: CarType[]
 }
-type Action = CarAction | QueryAction
+type Action = CarAction | QueryAction | SearchActiveAction
 
 function carsReducer(state: State, action: Action): State {
   switch (action.type) {
@@ -96,6 +104,8 @@ function carsReducer(state: State, action: Action): State {
       return { ...state, searchItems: action.payload }
     case ActionKind.Add_to_Query:
       return { ...state, query: action.payload }
+    case ActionKind.Is_Search_Active:
+      return{...state,isSearchActive:action.payload}
 
     default:
       return state
@@ -190,18 +200,23 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
     }
   }
 
-  const addToQuery = (q: string) => {
-    dispatch({ type: ActionKind.Add_to_Query, payload: q })
+  const addToQuery = (query: string) => {
+    dispatch({ type: ActionKind.Add_to_Query, payload: query })
   }
 
-  const addToSearch = (s: CarType[]) => {
-    dispatch({ type: ActionKind.Add_To_Search, payload: s })
+  const addToSearch = (searchCarList: CarType[]) => {
+    dispatch({ type: ActionKind.Add_To_Search, payload: searchCarList })
+  }
+
+  const searchActive=(bool:Boolean)=>{
+    dispatch({type:ActionKind.Is_Search_Active,payload:bool})
+
   }
 
   return (
     <div>
       <Provider
-        value={{ ...state, addToFavourite, createCar, deleteCar, addToQuery,addToSearch }}
+        value={{ ...state, addToFavourite, createCar, deleteCar, addToQuery,addToSearch,searchActive }}
       >
         {children}
       </Provider>

@@ -1,17 +1,28 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect } from "react"
 
 import { CarsList } from "../../components"
 import { CarsContext } from "../../contexts/CarContext"
+import { SearchWrapper } from "./styles"
 
 export default function SearchFilter() {
   const context = useContext(CarsContext)
-  const { searchItems, query } = context
+  const { cars, searchItems, query, addToSearch } = context
+  useEffect(() => {
+    const searchCarList = cars.filter(
+      (car) =>
+        car.car_brand.toLowerCase().includes(query) ||
+        car.car_name.toLowerCase().includes(query)
+    )
+    addToSearch(searchCarList)
+  }, [])
 
- 
   return (
-    <div>
-      ({query && <h3>You are searching for {`"${query}"`}</h3>}
-      <CarsList searchItems={searchItems} />)
-    </div>
+    <>
+      {query && <h3>You are searching for - {`"${query}"`}</h3>}
+      <SearchWrapper>
+        {"filter"}
+        <CarsList searchItems={searchItems} />
+      </SearchWrapper>
+    </>
   )
 }
