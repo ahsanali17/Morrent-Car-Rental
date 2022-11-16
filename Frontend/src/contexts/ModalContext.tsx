@@ -1,12 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-type VoidFunction = () => void;
-
-type useStateSetter<T> = React.Dispatch<React.SetStateAction<T>>
-
-type ContextProps = {
-  children: React.ReactNode;
-}
+import { VoidFunction, useStateSetter, ContextProps } from '../types/index';
 
 type ContextObjectValue = {
   isOpen: boolean;

@@ -1,10 +1,14 @@
 import { FC } from "react";
-import DownArrow from "../../assets/icons/DownArrow";
-import Title from "../../assets/icons/DropOffTitle";
-import { DropOffHeaderContainer, DropOffHeader, DropOffLabel, DropOffDiv, DropOffDiv2, DropOffItem, DropOffTitle, DropOffWrapper, SelectCity, SelectDiv } from "./styles";
 
+import DownArrow from "../../assets/icons/DownArrow";
+import { DropDown } from '../';
+import { CITIES } from "../../utils/constants";
+import { DropOffHeaderContainer, DropOffHeader, DropOffLabel, DropOffDiv, DropOffDiv2, DropOffItem, DropOffTitle, DropOffWrapper, SelectCity, SelectDiv } from "./styles";
+import { useDropDownContext } from "../../contexts/DropDownContext";
 
 const DropOff: FC = () => {
+  const { handleOpenMenu } = useDropDownContext();
+
   return (
     <DropOffWrapper>
       <DropOffHeaderContainer>
@@ -16,7 +20,7 @@ const DropOff: FC = () => {
           <DropOffTitle>Locations</DropOffTitle>
           <SelectDiv>
             <SelectCity>Select City</SelectCity>
-            <DownArrow />
+            <DownArrow handleOpen={handleOpenMenu}/>
           </SelectDiv>
         </DropOffDiv>
         <DropOffDiv2>
@@ -34,6 +38,7 @@ const DropOff: FC = () => {
           </SelectDiv>
         </DropOffDiv>
       </DropOffItem>
+      <DropDown dropDownItems={CITIES}/>
     </DropOffWrapper>
   )
 }

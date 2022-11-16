@@ -4,15 +4,18 @@ import { ModalProvider } from 'styled-react-modal';
 
 import App from './App';
 import { ModalContext } from './contexts/ModalContext';
-import {CarsContextProvider} from "./contexts/CarContext"
+import { DropDownContext } from './contexts/DropDownContext';
+import { CarsContextProvider } from "./contexts/CarContext"
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ModalContext>
       <ModalProvider>
-      <CarsContextProvider>
-        <App />
-      </CarsContextProvider>
+      <DropDownContext>
+        <CarsContextProvider>
+          <App />
+        </CarsContextProvider>
+      </DropDownContext>
       </ModalProvider>
     </ModalContext>
   </React.StrictMode>
