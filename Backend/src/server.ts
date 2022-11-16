@@ -47,9 +47,9 @@ mongoose
 /** Only start the server if Mongoose connects */
 
 const StartServer = () => {
-    routerServer.use((req: Request, res: Response, next: NextFunction ) => {
-        /** Log The Request */
-        Logging.info(`Incoming => Method [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`);
+	routerServer.use((req: Request, res: Response, next: NextFunction) => {
+		/** Log The Request */
+		Logging.info(`Incoming => Method [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`);
 
 		res.on('finish', () => {
 			/** Log The Response */
@@ -62,10 +62,10 @@ const StartServer = () => {
 	routerServer.use(express.urlencoded({ extended: true }));
 	routerServer.use(express.json());
 
-    /** Rules of our API */
-    routerServer.use((req: Request, res: Response, next: NextFunction) => {
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+	/** Rules of our API */
+	routerServer.use((req: Request, res: Response, next: NextFunction) => {
+		res.header('Access-Control-Allow-Origin', '*');
+		res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
 		if (req.method == 'OPTIONS') {
 			res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
@@ -75,19 +75,19 @@ const StartServer = () => {
 		next();
 	});
 
-    /** Routes */
-    routerServer.use('/cars', carRoutes);
-				routerServer.use('/users', userRoutes);
-				routerServer.use('/', authRoutes);
-    routerServer.use('/stripe', stripeRoutes);
+	/** Routes */
+	routerServer.use('/cars', carRoutes);
+	routerServer.use('/users', userRoutes);
+	routerServer.use('/auth', authRoutes);
+	routerServer.use('/stripe', stripeRoutes);
 
-    /** API Check */
-    routerServer.get('/ping', (req: Request, res: Response, next: NextFunction) => res.status(200).json({ message: 'pong' }));
+	/** API Check */
+	routerServer.get('/ping', (req: Request, res: Response, next: NextFunction) => res.status(200).json({ message: 'pong' }));
 
-    /** Error Handling */
-    routerServer.use((req: Request, res: Response, next: NextFunction) => {
-        const error = new Error('Not Found');
-        Logging.error(error);
+	/** Error Handling */
+	routerServer.use((req: Request, res: Response, next: NextFunction) => {
+		const error = new Error('Not Found');
+		Logging.error(error);
 
 		return res.status(404).json({ message: error.message });
 	});

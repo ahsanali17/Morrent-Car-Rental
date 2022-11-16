@@ -1,21 +1,30 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import passport from 'passport';
 
-const authRouter = express();
+import controller from '../controllers/Auth';
 
-authRouter.get('/auth', (req, res) => {
-	res.send('<a href="/auth/google">Authenticate with Google</a>');
+const authRouter = express();
+const CLIENT_URL = 'http://localhost:5173/';
+
+authRouter.get('/google', (req, res) => {
+	res.send('<a href="/auth/google/login">Authenticate with Google</a>');
 });
 
-// // Make function in user controller to authenticate user
-authRouter.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
+// Logs user in with google
+authRouter.get('/google/login', passport.authenticate('google', { scope: ['email', 'profile'] }));
 
-// // Make function in user controller to call back user to previous page after successful authentication
+// Sign out of webapp
+authRouter.post('/google/logout', controller.signOut);
+
 authRouter.get(
 	'/google/callback',
 	passport.authenticate('google', {
-		successRedirect: 'http://localhost:5173/'
+		successRedirect: CLIENT_URL,
+		failureRedirect: '/login/failed'
 	})
 );
+
+// Check Session to see if user is logged in
+authRouter.get('/checkSession', controller.checkSession);
 
 export default authRouter;

@@ -1,4 +1,3 @@
-import express from 'express';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import strategy from 'passport-google-oauth20';
@@ -12,8 +11,6 @@ const GoogleStrategy = strategy.Strategy;
 const googleClient = process.env.GOOGLE_CLIENT_ID || '';
 const googleSecret = process.env.GOOGLE_SECRET || '';
 
-// TODO: Add the entire code in a try catch block and await all passport.use methods
-
 const passportSetup = () => {
 	passport.use(
 		new GoogleStrategy(
@@ -21,7 +18,7 @@ const passportSetup = () => {
 				// options for google strategy
 				clientID: googleClient,
 				clientSecret: googleSecret,
-				callbackURL: 'http://localhost:9090/google/callback',
+				callbackURL: 'http://localhost:9090/auth/google/callback',
 				passReqToCallback: true
 			},
 			async (req, accessToken: any, refreshToken: any, profile: any, done: any) => {

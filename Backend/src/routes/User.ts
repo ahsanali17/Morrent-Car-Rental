@@ -1,11 +1,11 @@
 import express from 'express';
 
 import controller from '../controllers/User';
+import checkAuthentication from '../middleware/authorization';
 
 const userRouter = express.Router();
 
-// userRouter.post('/create', controller.createUser);
-userRouter.get('/get/allUsers', controller.getAllUsers);
+// Add protected Routes to user routes
 userRouter.get('/get/:_id', controller.getOneUser);
 
 export default userRouter;
