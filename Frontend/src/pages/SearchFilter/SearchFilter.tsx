@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 
-import { CarsList } from ".."
+import { CarsList } from "../../components"
 import { CarsContext } from "../../contexts/CarContext"
 import { SearchWrapper } from "./styles"
 
@@ -13,7 +13,7 @@ export default function SearchFilter() {
         car.car_brand.toLowerCase().includes(query) ||
         car.car_name.toLowerCase().includes(query)
     )
-    
+
     addToSearch(searchCarList)
   }, [])
   console.log(searchItems)

@@ -18,17 +18,30 @@ const Icon = styled.input`
 const SearchBar = () => {
   const context = useContext(CarsContext)
   const { addToQuery, searchActive } = context
-  // const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false)
   const [query, setQuery] = useState("")
+  const [search, setSearch] = useState([])
   const navigate = useNavigate()
-  // console.log(active)
+  console.log(active)
   useEffect(() => {
     addToQuery(query)
-    query.length != 0 ? searchActive(true) : searchActive(false)
-  }, [query])
+    if (query.length!=0) {  // her I want react to go to the search component (Searchfilter component)as soon as the user types where the search results are disyyplyed
+      navigate(`/search?query=${query}`)
+      setActive(true)
+    } else {
+      setActive(false)
+      // navigate(-1)
+    }
+  }, [query,active])
+
+  useEffect(() => {
+    console.log(active,"active value")
+  }, [active])
+
+ 
 
   return (
-    <form>
+    <>
       <Icon
         type="text"
         placeholder="Search.."
@@ -38,43 +51,10 @@ const SearchBar = () => {
         value={query}
         name="search"
       />
-    </form>
+      {/* <button onClick={(e) => handleClick(e)}>click</button> */}
+    </>
   )
 }
 export default SearchBar
 
-// const Searchcars = async (): Promise<void> => {
-//   try {
-//     const response = await fetch(`http://localhost:4000/get?q=${query}`)
-//     const data = await response.json()
-//     if (response.ok) {
-//       setSearch(data) // we are getting the full search results based in query
-//       addToSearch(search)
-//     }
-//   } catch (error) {
-//     console.log(error) // Here we receive the error from the backend and can setan error /modal to show the error to user
-//   }
-// }
-// Searchcars()
 
-// useEffect(() => {
-//   addToQuery(query)
-//   if (query.length != 0) {
-//     // her I want react to go to the search component (Searchfilter component)as soon as the user types where the search results are disyyplyed
-
-//     setActive(true)
-//   } else {
-//     setActive(false)
-//     navigate("/")
-//   }
-// }, [query, active])
-
-// useEffect(() => {
-//   if(active)
-//   navigate("/hello")
-// }, [active])
-
-// const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-//   e.preventDefault()
-//   navigate(`/search?query=${query}`)
-// }
