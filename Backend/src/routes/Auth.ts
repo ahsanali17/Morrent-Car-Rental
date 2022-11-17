@@ -1,20 +1,23 @@
 import express from 'express';
 import passport from 'passport';
 
-import controller from '../controllers/Auth';
-
-const authRouter = express();
+const authRouter = express.Router();
 const CLIENT_URL = 'http://localhost:5173/';
 
 authRouter.get('/google', (req, res) => {
 	res.send('<a href="/auth/google/login">Authenticate with Google</a>');
 });
 
-// Logs user in with google
+//  Logs user in with google
 authRouter.get('/google/login', passport.authenticate('google', { scope: ['email', 'profile'] }));
 
 // Sign out of webapp
-authRouter.post('/google/logout', controller.signOut);
+authRouter.get('/google/logout', (req, res) => {
+	req.session.destroy(() => {
+		res.clearCookie('connect.sid');
+		res.redirect('/auth/google');
+	});
+});
 
 authRouter.get(
 	'/google/callback',
@@ -23,8 +26,5 @@ authRouter.get(
 		failureRedirect: '/login/failed'
 	})
 );
-
-// Check Session to see if user is logged in
-authRouter.get('/checkSession', controller.checkSession);
 
 export default authRouter;

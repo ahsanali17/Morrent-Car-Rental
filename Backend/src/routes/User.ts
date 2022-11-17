@@ -6,6 +6,6 @@ import checkAuthentication from '../middleware/authorization';
 const userRouter = express.Router();
 
 // Add protected Routes to user routes
-userRouter.get('/get/:_id', controller.getOneUser);
+userRouter.get('/get/:_id', checkAuthentication, controller.getOneUser);
 
 export default userRouter;
