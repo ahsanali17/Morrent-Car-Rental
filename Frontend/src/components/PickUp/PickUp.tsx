@@ -1,10 +1,16 @@
 import { FC } from "react";
 import DownArrow from "../../assets/icons/DownArrow";
-import Title from "../../assets/icons/PickupTitle";
 
 import { PickUpHeaderContainer, PickUpHeader, PickUpLabel, PickUpDiv, PickUpDiv2, PickUpItem, PickUpTitle, PickUpWrapper, SelectCity, SelectDiv } from "./styles";
+import { DropDown } from '../';
+import { CITIES } from "../../utils/constants";
+import { useDropDownContext } from "../../contexts/DropDownContext";
+import { usePickUpDropOffContext } from "../../contexts/PickUpDropOffContext";
 
 const PickUp: FC = () => {
+  const { handleOpenMenu, openMenu } = useDropDownContext();
+  const { locationOneChange, initialState } = usePickUpDropOffContext();
+
   return (
     <PickUpWrapper>
       <PickUpHeaderContainer>
@@ -13,27 +19,28 @@ const PickUp: FC = () => {
       </PickUpHeaderContainer>
       <PickUpItem>
         <PickUpDiv>
-          <PickUpTitle>Locations</PickUpTitle>
+          <PickUpTitle><h4>Locations</h4></PickUpTitle>
           <SelectDiv>
-            <SelectCity>Select City</SelectCity>
-            <DownArrow />
+            <SelectCity><h5>{initialState.location1.length > 0 ? initialState.location1: 'Select City'}</h5></SelectCity>
+            <DownArrow handleClick={handleOpenMenu}/>
           </SelectDiv>
         </PickUpDiv>
         <PickUpDiv2>
-          <PickUpTitle>Date</PickUpTitle>
+          <PickUpTitle><h4>Date</h4></PickUpTitle>
           <SelectDiv>
-            <SelectCity>Select Your Date</SelectCity>
+            <SelectCity><h5>Select Your Date</h5></SelectCity>
             <DownArrow />
           </SelectDiv>
         </PickUpDiv2>
         <PickUpDiv>
-          <PickUpTitle>Time</PickUpTitle>
+          <PickUpTitle><h4>Time</h4></PickUpTitle>
           <SelectDiv>
-            <SelectCity>Select your time</SelectCity>
+            <SelectCity><h5>Select your time</h5></SelectCity>
             <DownArrow />
           </SelectDiv>
         </PickUpDiv>
       </PickUpItem>
+      <DropDown dropDownItems={CITIES} openMenu={openMenu} dispatchClickFunction={locationOneChange} handleDropDownClose={handleOpenMenu}/>
     </PickUpWrapper>
   )
 }

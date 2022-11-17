@@ -5,9 +5,11 @@ import { DropDown } from '../';
 import { CITIES } from "../../utils/constants";
 import { DropOffHeaderContainer, DropOffHeader, DropOffLabel, DropOffDiv, DropOffDiv2, DropOffItem, DropOffTitle, DropOffWrapper, SelectCity, SelectDiv } from "./styles";
 import { useDropDownContext } from "../../contexts/DropDownContext";
+import { usePickUpDropOffContext } from "../../contexts/PickUpDropOffContext";
 
 const DropOff: FC = () => {
-  const { handleOpenMenu } = useDropDownContext();
+  const { handleOpenMenu2, openMenu2 } = useDropDownContext();
+  const { locationTwoChange, initialState } = usePickUpDropOffContext();
 
   return (
     <DropOffWrapper>
@@ -17,28 +19,28 @@ const DropOff: FC = () => {
       </DropOffHeaderContainer>
       <DropOffItem>
         <DropOffDiv>
-          <DropOffTitle>Locations</DropOffTitle>
+          <DropOffTitle><h4>Locations</h4></DropOffTitle>
           <SelectDiv>
-            <SelectCity>Select City</SelectCity>
-            <DownArrow handleOpen={handleOpenMenu}/>
+            <SelectCity><h5>{initialState.location2.length > 0 ? initialState.location2: 'Select City'}</h5></SelectCity>
+            <DownArrow handleClick={handleOpenMenu2}/>
           </SelectDiv>
         </DropOffDiv>
         <DropOffDiv2>
-          <DropOffTitle>Locations</DropOffTitle>
+          <DropOffTitle>Date</DropOffTitle>
           <SelectDiv>
-            <SelectCity>Select City</SelectCity>
+            <SelectCity>Select your date</SelectCity>
             <DownArrow />
           </SelectDiv>
         </DropOffDiv2>
         <DropOffDiv>
-          <DropOffTitle>Locations</DropOffTitle>
+          <DropOffTitle>Time</DropOffTitle>
           <SelectDiv>
-            <SelectCity>Select City</SelectCity>
+            <SelectCity>Select your time</SelectCity>
             <DownArrow />
           </SelectDiv>
         </DropOffDiv>
       </DropOffItem>
-      <DropDown dropDownItems={CITIES}/>
+      <DropDown dropDownItems={CITIES} openMenu={openMenu2} dispatchClickFunction={locationTwoChange} handleDropDownClose={handleOpenMenu2}/>
     </DropOffWrapper>
   )
 }
