@@ -11,15 +11,17 @@ import {
   CardSpesificationDiv,
   CardTag,
   CardTitle,
+  Icon,
   PricePerDay,
   PricePerDaySmall,
+  RentNowButton,
 } from "./styles"
-
-import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons'
 
 import { CarsContext } from "../../contexts/CarContext"
 
 import carImg from "/src/assets/cars/car.png"
+import { FavoriteRed, GasIcon, Users, Wheel } from "../../assets/icon"
+import { Link } from "react-router-dom"
 
 type CarCardType = {
   car: {}
@@ -33,15 +35,15 @@ const CarCard = ({ car }: CarCardType) => {
 
   const features = [
     {
-      icon: <GasIcon />,
+      icon: <Icon src={GasIcon} />,
       title: "90L"
     },
     {
-      icon: <CarIcon />,
+      icon: <Icon src={Wheel} />,
       type: "Manual"
     },
     {
-      icon: <Users />,
+      icon: <Icon src={Users} />,
       qty: "2 People"
     },
   ]
@@ -52,7 +54,7 @@ const CarCard = ({ car }: CarCardType) => {
           <CardTitle>
             Koenigsegg <CardTag>Sport</CardTag>
           </CardTitle>
-          <Liked />
+          <Icon src={FavoriteRed} />
         </CardRow1>
         <CardRow2>
           <img src={carImg} />
@@ -61,7 +63,7 @@ const CarCard = ({ car }: CarCardType) => {
           {
             features.map((feature) => (
               <CardSpesificationDiv key={feature.type}>
-                {feature.icon}
+                {feature.icon} <CardSpesification>{feature.title}</CardSpesification>
                 <CardSpesification>{feature.type}</CardSpesification>
                 <CardSpesification>{feature.qty}</CardSpesification>
               </CardSpesificationDiv>
@@ -75,7 +77,11 @@ const CarCard = ({ car }: CarCardType) => {
             </PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
-          <RentNowBtn />
+          <RentNowButton>
+            <Link to="/CarDetails" style={{ textDecoration: "none", color: "white" }}>
+              Rent Now
+            </Link>
+          </RentNowButton>
         </CardRow4>
       </Article>
     </CarCardWrapper>

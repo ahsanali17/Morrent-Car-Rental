@@ -113,3 +113,7 @@ export const SelectCity = styled.div`
     line-height: 200%;
   }
 `;
+
+export const DropDownArrow = styled.img`
+  height: 14px;
+`;

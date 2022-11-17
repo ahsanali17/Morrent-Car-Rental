@@ -187,3 +187,12 @@ export const FooterBottomLinkDiv = styled.div`
   @media (min-width: 1024px) {
   }
 `;
+
+export const AppLogo = styled.img`
+  cursor: pointer;
+  height: 30px;
+
+  @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
+    height: 19px;
+  }
+`;

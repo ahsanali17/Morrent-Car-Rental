@@ -147,6 +147,27 @@ export const Button = styled.button`
   }
 `;
 
+export const DocumentIconElement = styled.img`
+height: 23px;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1024px) {
+  }
+`;
+
+export const UploadIconElement = styled.img`
+height: 30px;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1024px) {
+  }
+`;
+
+
 
 const getColor = (props: any) => {
   if (props.isDragAccept) {

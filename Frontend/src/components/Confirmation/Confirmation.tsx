@@ -1,6 +1,7 @@
+import { Alert, AlertGroup, Button, FormWrapper, SecurityGroup, SecurityIconElement } from "./styles";
+import { SecuritySafety } from '../../assets/icon';
+
 import { Formik, Field, Form, FormikHelpers } from "formik";
-import { SecuritySafety } from "../../assets/icons";
-import { Alert, AlertGroup, Button, FormWrapper, SecurityGroup } from "./styles";
 
 interface Values {
     firstName: string;
@@ -54,7 +55,7 @@ const Confirmation = () => {
                         </AlertGroup>
                         <Button type="submit">Submit</Button>
                         <SecurityGroup>
-                            <SecuritySafety />
+                            <SecurityIconElement src={SecuritySafety} />
                             <div>
                                 <h2>All your data is safe</h2>
                                 <h3>We are using the most advanced security to provide you the best experience ever.</h3>

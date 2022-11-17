@@ -76,6 +76,10 @@ export const CardRow3 = styled.div`
   justify-content: space-between;
   padding: 0px;
   gap: 16px;
+  transform: scale(.95);
+  width: 105%;
+  left: -3%;
+  position: relative;
   @media (min-width: 640px) {
   }
   @media (min-width: 768px) {
@@ -133,7 +137,7 @@ export const CardSpesificationDiv = styled.span`
   align-items: center;
   justify-content: center;
   padding: 0px;
-  gap: 6px;
+  gap: 2px;
   @media (min-width: 640px) {
   }
   @media (min-width: 768px) {
@@ -191,6 +195,38 @@ export const PricePerDaySmall = styled.span`
   display: flex;
   align-items: center;
   color: #90a3bf;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1024px) {
+  }
+`;
+
+export const RentNowButton = styled.span`
+  padding: 0px 20px;
+  background: #3563E9;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1024px) {
+  }
+`;
+
+export const Icon = styled.img`
+  width: 24px;
+  height: 24px;
   @media (min-width: 640px) {
   }
   @media (min-width: 768px) {

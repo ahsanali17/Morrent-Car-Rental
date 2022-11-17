@@ -6,7 +6,6 @@ import profileImg from '/src/assets/img/profile-pic.png'
 import { MdModeEditOutline } from 'react-icons/md';
 import { CarsForRent, RentedCars } from '../CarsList';
 import { Link } from 'react-router-dom';
-// import { RentedCars, CarsForRent } from '../CarCard';
 
 const ProfileComponent = () => {
     return (

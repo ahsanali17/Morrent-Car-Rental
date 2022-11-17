@@ -37,6 +37,18 @@ export const FeaturedCardsWrapper = styled.div`
   }
 `;
 
+
+
+export const SearchIconElement = styled.img` 
+  width:24px; height:24px;
+  position: absolute;
+  left: 1rem;
+  bottom: 12px;
+  @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
+
+  }
+`;
+
 export const SearchSettings = styled.div`
   display: none;
 

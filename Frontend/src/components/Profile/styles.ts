@@ -121,12 +121,13 @@ export const ProfileDetailsDiv = styled.div`
   display: flex;
   margin: auto;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   position: relative;
   @media (min-width: 640px) {
   }
   @media (min-width: 768px) {
   top: 1rem;
+  width: 100%;
   }
   @media (min-width: 1024px) {
   }

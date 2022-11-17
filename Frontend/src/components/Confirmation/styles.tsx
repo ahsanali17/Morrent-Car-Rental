@@ -318,3 +318,13 @@ export default {
   StyledUpload,
   StyledRender
 };
+
+export const SecurityIconElement = styled.img`
+width: 32px;
+  @media (min-width: 640px) {
+  }
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1024px) {
+  }
+`;

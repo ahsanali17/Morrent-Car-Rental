@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import Dropzone from "react-dropzone";
 
-import { Button, FieldGroup, FormWrapper, InputGroup, StyledUpload, UploadResponseGroup, UploadResponseRow } from './styles';
-import { DocumentIcon, UploadIcon } from '../../assets/icons';
+import { Button, DocumentIconElement, FieldGroup, FormWrapper, InputGroup, StyledUpload, UploadResponseGroup, UploadResponseRow } from './styles';
 import { CustomProgressBar } from '../../assets';
+import { DocumentIcon, UploadIcon } from '../../assets/icon';
 
 
 interface Values {
@@ -106,7 +106,7 @@ const AddCarForm = () => {
                                             })}
                                         >
                                             <input {...getInputProps()} />
-                                            <span>{isDragActive ? <UploadIcon /> : <UploadIcon />}</span>
+                                            <span>{isDragActive ? <DocumentIconElement src={UploadIcon} /> : <DocumentIconElement src={UploadIcon} />}</span>
                                             <p>
                                                 Drag and drop an image, or Browse
                                             </p>
@@ -122,7 +122,7 @@ const AddCarForm = () => {
                         <UploadResponseGroup>
                             <UploadResponseRow>
                                 <div style={{ display: "flex", gap: "8px" }}>
-                                    <DocumentIcon />
+                                    <DocumentIconElement src={DocumentIcon} />
                                     <label htmlFor="carDescription">car_front.jpg</label>
                                 </div>
                                 <span style={{}}>2.5 MB of 5.1 MB</span>

@@ -17,6 +17,10 @@ export const PickUpWrapper = styled.div`
   }
 `;
 
+export const DropDownArrow = styled.img`
+  height: 14px;
+`;
+
 export const PickUpContainer = styled.div`
   display: flex;
   flex-direction: column;

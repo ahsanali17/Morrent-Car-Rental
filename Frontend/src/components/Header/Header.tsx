@@ -1,19 +1,24 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
-import { HeaderWrapper, HeaderFeaturesContainer } from "./styles";
-import { NavIcon, BellIcon, LikeIcon, SettingIcon, AvatarIcon } from "../../assets";
+import { HeaderWrapper, HeaderFeaturesContainer, Icon, AppLogo, Avatar } from "./styles";
+
+import { Favorite, Logo, Notification, Settings } from "../../assets/icon";
+import AvatarImg from "/src/assets/img/nav-avatar.png";
+
 
 const Header: FC = () => {
   return (
     <HeaderWrapper>
-      <NavIcon />
+      <Link to="/">
+        <AppLogo src={Logo} />
+      </Link>
       <HeaderFeaturesContainer>
-        <BellIcon />
-        <LikeIcon />
-        <SettingIcon />
+        <Icon src={Notification} />
+        <Icon src={Favorite} />
+        <Icon src={Settings} />
         <Link to="/profile">
-          <AvatarIcon />
+          <Avatar src={AvatarImg} />
         </Link>
       </HeaderFeaturesContainer>
     </HeaderWrapper>

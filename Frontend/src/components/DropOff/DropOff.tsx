@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-import { DropOffHeaderContainer, DropOffHeader, DropOffLabel, DropOffDiv, DropOffDiv2, DropOffItem, DropOffTitle, DropOffWrapper, SelectCity, SelectDiv } from "./styles";
+import { DropOffHeaderContainer, DropOffHeader, DropOffLabel, DropOffDiv, DropOffDiv2, DropOffItem, DropOffTitle, DropOffWrapper, SelectCity, SelectDiv, DropDownArrow } from "./styles";
 
-import DownArrow from "../../assets/icons/DownArrow";
+import { DownArrow } from "../../assets/icon";
 
 
 const DropOff: FC = () => {
@@ -17,21 +17,21 @@ const DropOff: FC = () => {
           <DropOffTitle>Locations</DropOffTitle>
           <SelectDiv>
             <SelectCity>Select City</SelectCity>
-            <DownArrow />
+            <DropDownArrow alt="dropdown" src={DownArrow} />
           </SelectDiv>
         </DropOffDiv>
         <DropOffDiv2>
           <DropOffTitle>Date</DropOffTitle>
           <SelectDiv>
             <SelectCity>Select Date</SelectCity>
-            <DownArrow />
+            <DropDownArrow alt="dropdown" src={DownArrow} />
           </SelectDiv>
         </DropOffDiv2>
         <DropOffDiv>
           <DropOffTitle>Time</DropOffTitle>
           <SelectDiv>
             <SelectCity>Select Time</SelectCity>
-            <DownArrow />
+            <DropDownArrow alt="dropdown" src={DownArrow} />
           </SelectDiv>
         </DropOffDiv>
       </DropOffItem>

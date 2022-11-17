@@ -33,3 +33,28 @@ export const HeaderFeaturesContainer = styled.div`
 
   padding: var(--padding-top-bottom) 0;
 `;
+
+export const Avatar = styled.img`
+  cursor: pointer;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+`;
+
+export const Icon = styled.img`
+  cursor: pointer;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
+    display: none;
+  }
+`;
+export const AppLogo = styled.img`
+  cursor: pointer;
+  height: 30px;
+
+  @media (${({ theme }) => theme.queries.smallMediumAndDown}) {
+    height: 19px;
+  }
+`;
