@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { GoogleLogIn } from "..";
 
 import { HeaderWrapper, HeaderFeaturesContainer } from "./styles";
 import {
