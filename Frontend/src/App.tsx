@@ -1,4 +1,4 @@
-import { FC, useContext } from "react"
+import { FC } from "react"
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,15 +6,13 @@ import {
   Navigate,
 } from "react-router-dom"
 import { ThemeProvider } from "styled-components"
-import { CarsContext } from "./contexts/CarContext"
 import { GlobalStyles } from "./globalStyles"
-import { Home, SearchFilter, Error } from "./pages"
+import { Home, Error } from "./pages"
 import { theme } from "./types/theme-type"
 
 
 const App: FC = () => {
-  const context = useContext(CarsContext)
-  const { isSearchActive } = context
+ 
 
   return (
     <>
@@ -22,8 +20,8 @@ const App: FC = () => {
       <ThemeProvider theme={theme}>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<SearchFilter />} />
+            <Route path="/" element={<Home/>} />
+            {/* <Route path="/search" element={<SearchFilter />} /> */}
             <Route path="*" element={<Error />} />
           </Routes>
         </Router>

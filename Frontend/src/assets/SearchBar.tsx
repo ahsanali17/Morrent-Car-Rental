@@ -18,33 +18,17 @@ const Icon = styled.input`
 const SearchBar = () => {
   const context = useContext(CarsContext)
   const { addToQuery, searchActive } = context
-  const [active, setActive] = useState(false)
+  // const [active, setActive] = useState(false)
   const [query, setQuery] = useState("")
-  const [search, setSearch] = useState([])
   const navigate = useNavigate()
-  console.log(active)
+  // console.log(active)
   useEffect(() => {
     addToQuery(query)
-    if (query.length!=0) {  // her I want react to go to the search component (Searchfilter component)as soon as the user types where the search results are disyyplyed
-      navigate(`/search?query=${query}`)
-      setActive(true)
-    } else {
-      setActive(false)
-      // navigate(-1)
-    }
-  }, [query,active])
-
-  useEffect(() => {
-    console.log(active,"active value")
-  }, [active])
-
-  // const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-  //   e.preventDefault()
-  //   navigate(`/search?query=${query}`)
-  // }
+    query.length != 0 ? searchActive(true) : searchActive(false)
+  }, [query])
 
   return (
-    <>
+    <form>
       <Icon
         type="text"
         placeholder="Search.."
@@ -54,8 +38,7 @@ const SearchBar = () => {
         value={query}
         name="search"
       />
-      {/* <button onClick={(e) => handleClick(e)}>click</button> */}
-    </>
+    </form>
   )
 }
 export default SearchBar
@@ -73,3 +56,25 @@ export default SearchBar
 //   }
 // }
 // Searchcars()
+
+// useEffect(() => {
+//   addToQuery(query)
+//   if (query.length != 0) {
+//     // her I want react to go to the search component (Searchfilter component)as soon as the user types where the search results are disyyplyed
+
+//     setActive(true)
+//   } else {
+//     setActive(false)
+//     navigate("/")
+//   }
+// }, [query, active])
+
+// useEffect(() => {
+//   if(active)
+//   navigate("/hello")
+// }, [active])
+
+// const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+//   e.preventDefault()
+//   navigate(`/search?query=${query}`)
+// }
