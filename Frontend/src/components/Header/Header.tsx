@@ -5,6 +5,7 @@ import { HeaderWrapper, HeaderFeaturesContainer, Icon, AppLogo, Avatar } from ".
 
 import { Favorite, Logo, Notification, Settings } from "../../assets/icon";
 import AvatarImg from "/src/assets/img/nav-avatar.png";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 const Header: FC = () => {
@@ -14,6 +15,7 @@ const Header: FC = () => {
         <AppLogo src={Logo} />
       </Link>
       <HeaderFeaturesContainer>
+        <SearchBar showSearchBar={false} showFilter={true} />
         <Icon src={Notification} />
         <Icon src={Favorite} />
         <Icon src={Settings} />

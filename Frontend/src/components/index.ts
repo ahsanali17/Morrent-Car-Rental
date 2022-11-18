@@ -17,3 +17,7 @@ export { default as Confirmation } from './Confirmation/Confirmation';
 export { default as AddCarForm } from './AddCarForm/AddCarForm';
 export { default as AsideLeft } from './AsideLeft/AsideLeft';
 export { default as DetailCar } from './DetailCar/DetailCar';
+export { default as SearchBar } from './SearchBar/SearchBar';
+export { default as SearchBar2 } from './SearchBar/SearchBar2';
+export { default as SearchBarMobile } from './SearchBar/SearchBarMobile';
+export { default as ScrollToTop } from './ScrollToTop/ScrollToTop';

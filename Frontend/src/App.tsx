@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { ScrollToTop } from './components';
 
 import { GlobalStyles } from './globalStyles';
-import { AddCar, Home, Profile } from './pages';
+import { AddCar, CarDetails, Category, Home, Profile } from './pages';
 import { theme } from './types/theme-type';
+
 
 const App: FC = () => {
   return (
@@ -12,11 +14,15 @@ const App: FC = () => {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/add-car" element={<AddCar />} />
-          </Routes>
+          <ScrollToTop>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/add-car" element={<AddCar />} />
+              <Route path="/car-details" element={<CarDetails />} />
+              <Route path="/category" element={<Category />} />
+            </Routes>
+          </ScrollToTop>
         </Router>
       </ThemeProvider>
     </>

@@ -15,6 +15,8 @@ import Users from "./Users.png";
 import Wheel from "./Wheel.png";
 import Logo from "./Logo.png";
 import RentNow from "./RentNow.png";
+import starFill from "./star-fill.png";
+import starOutline from "./star-outline.png";
 
 export {
     DocumentIcon,
@@ -34,4 +36,6 @@ export {
     Wheel,
     Logo,
     RentNow,
+    starFill,
+    starOutline,
 };

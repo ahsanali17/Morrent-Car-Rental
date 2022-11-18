@@ -78,7 +78,7 @@ const CarCard = ({ car }: CarCardType) => {
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
           <RentNowButton>
-            <Link to="/CarDetails" style={{ textDecoration: "none", color: "white" }}>
+            <Link to="/car-details" style={{ textDecoration: "none", color: "white" }}>
               Rent Now
             </Link>
           </RentNowButton>

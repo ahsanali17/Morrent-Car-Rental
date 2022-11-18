@@ -20,7 +20,7 @@ export const LeftSide = styled.aside`
   left: 0px;
   top: 0px;
   background: white;
-
+  display: none;
   padding: 32px;
   h3 {
     font-style: normal;
@@ -66,6 +66,7 @@ export const LeftSide = styled.aside`
   }
   @media (min-width: 768px) {
     margin: 0rem;
+  display: block;
   }
   @media (min-width: 1024px) {
   }
