@@ -73,6 +73,14 @@ const PickUpDropOffReducer = (state: StateType, action: Action): StateType => {
       return { ...state, location1: action.payload };
     case 'LOCATION_TWO': 
       return { ...state, location2: action.payload };
+    case 'DATE_ONE': 
+      return { ...state, date1: action.payload };
+    case 'DATE_TWO': 
+      return { ...state, date2: action.payload };
+    case 'TIME_ONE': 
+      return { ...state, time1: action.payload };
+    case 'TIME_TWO': 
+      return { ...state, time2: action.payload };
     default: {
       return state;
     }
@@ -82,8 +90,6 @@ const PickUpDropOffReducer = (state: StateType, action: Action): StateType => {
 export const PickUpDropOffContext = ({ children }: ContextProps) => {
   const [state, dispatch] = useReducer(PickUpDropOffReducer, initialState);
   
-  useEffect(() => console.log(state), [state])
-
   const locationOneChange: Dispatch = (payload: string) => dispatch({ type: ActionTypes.location1, payload: payload });
   const locationTwoChange: Dispatch = (payload: string) => dispatch({ type: ActionTypes.location2, payload: payload });
   const dateOneChange: Dispatch = (payload: string) => dispatch({ type: ActionTypes.date1, payload: payload });

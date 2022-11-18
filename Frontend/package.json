@@ -12,6 +12,7 @@
     "@reduxjs/toolkit": "^1.9.0",
     "@stripe/stripe-js": "^1.44.1",
     "react": "^18.2.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-focus-lock": "^2.9.1",
     "react-redux": "^8.0.4",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.22",
+    "@types/react-datepicker": "^4.8.0",
     "@types/react-dom": "^18.0.7",
     "@types/styled-components": "^5.1.26",
     "@types/styled-react-modal": "^1.2.2",

@@ -2,7 +2,7 @@ import { FC } from "react";
 import DownArrow from "../../assets/icons/DownArrow";
 
 import { PickUpHeaderContainer, PickUpHeader, PickUpLabel, PickUpDiv, PickUpDiv2, PickUpItem, PickUpTitle, PickUpWrapper, SelectCity, SelectDiv } from "./styles";
-import { DropDown } from '../';
+import { DropDown, Calender } from '../';
 import { CITIES } from "../../utils/constants";
 import { useDropDownContext } from "../../contexts/DropDownContext";
 import { usePickUpDropOffContext } from "../../contexts/PickUpDropOffContext";
@@ -30,6 +30,7 @@ const PickUp: FC = () => {
           <SelectDiv>
             <SelectCity><h5>Select Your Date</h5></SelectCity>
             <DownArrow />
+            {/* <Calender /> */}
           </SelectDiv>
         </PickUpDiv2>
         <PickUpDiv>
