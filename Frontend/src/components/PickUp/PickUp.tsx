@@ -28,9 +28,8 @@ const PickUp: FC = () => {
         <PickUpDiv2>
           <PickUpTitle><h4>Date</h4></PickUpTitle>
           <SelectDiv>
-            <SelectCity><h5>Select Your Date</h5></SelectCity>
+            <SelectCity><h5><Calender /></h5></SelectCity>
             <DownArrow />
-            {/* <Calender /> */}
           </SelectDiv>
         </PickUpDiv2>
         <PickUpDiv>
