@@ -12,11 +12,12 @@ authRouter.get('/google', (req, res) => {
 authRouter.get('/google/login', passport.authenticate('google', { scope: ['email', 'profile'] }));
 
 // Sign out of webapp
-authRouter.get('/google/logout', (req, res) => {
-	req.session.destroy(() => {
+authRouter.get('/google/logout', async (req, res) => {
+	await req.session.destroy((err) => {
+		console.log(err);
 		res.clearCookie('connect.sid');
-		res.redirect('/auth/google');
 	});
+	return res.redirect(CLIENT_URL);
 });
 
 authRouter.get(

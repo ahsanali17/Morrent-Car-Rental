@@ -1,10 +1,10 @@
-import { FC } from "react"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { ThemeProvider } from "styled-components"
+import { FC, useContext } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 
-import { GlobalStyles } from "./globalStyles"
-import { Home } from "./pages"
-import { theme } from "./types/theme-type"
+import { GlobalStyles } from "./globalStyles";
+import { Home } from "./pages";
+import { theme } from "./types/theme-type";
 
 const App: FC = () => {
   return (
@@ -22,7 +22,7 @@ const App: FC = () => {
         </Router>
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

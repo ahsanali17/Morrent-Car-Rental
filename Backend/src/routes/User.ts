@@ -8,4 +8,8 @@ const userRouter = express.Router();
 // Add protected Routes to user routes
 userRouter.get('/get/:_id', checkAuthentication, controller.getOneUser);
 
+userRouter.get('/getCurrentUser', (req, res) => {
+	res.send(req.user);
+});
+
 export default userRouter;
