@@ -13,11 +13,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <ModalContext>
       <ModalProvider>
       <PickUpDropOffContext>
-        <DropDownContext>
-          <CarsContextProvider>
-            <App />
-          </CarsContextProvider>
-        </DropDownContext>
+      <DropDownContext>
+        <CarsContextProvider>
+          <App />
+        </CarsContextProvider>
+      </DropDownContext>
       </PickUpDropOffContext>
       </ModalProvider>
     </ModalContext>

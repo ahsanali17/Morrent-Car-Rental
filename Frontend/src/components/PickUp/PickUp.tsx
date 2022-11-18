@@ -9,7 +9,7 @@ import { usePickUpDropOffContext } from "../../contexts/PickUpDropOffContext";
 
 const PickUp: FC = () => {
   const { handleOpenMenu, openMenu } = useDropDownContext();
-  const { locationOneChange, initialState } = usePickUpDropOffContext();
+  const { locationOneChange, state } = usePickUpDropOffContext();
 
   return (
     <PickUpWrapper>
@@ -21,7 +21,7 @@ const PickUp: FC = () => {
         <PickUpDiv>
           <PickUpTitle><h4>Locations</h4></PickUpTitle>
           <SelectDiv>
-            <SelectCity><h5>{initialState.location1.length > 0 ? initialState.location1: 'Select City'}</h5></SelectCity>
+            <SelectCity><h5>{state.location1.length > 0 ? state.location1: 'Select City'}</h5></SelectCity>
             <DownArrow handleClick={handleOpenMenu}/>
           </SelectDiv>
         </PickUpDiv>

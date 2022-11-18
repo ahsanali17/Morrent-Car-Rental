@@ -11,4 +11,6 @@ export const LocationSwitcherWrapper = styled.div`
     justify-self: center;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
 `;

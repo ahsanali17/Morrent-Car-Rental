@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 
 import { ContextProps, Dispatch } from '../types/index';
 
@@ -52,7 +52,7 @@ type ContextObject = {
   dateTwoChange: null | Dispatch;
   timeOneChange: null | Dispatch;
   timeTwoChange: null | Dispatch;
-  initialState: StateType;
+  state: StateType;
 }
 
 const defaultContextObj: ContextObject = {
@@ -62,7 +62,7 @@ const defaultContextObj: ContextObject = {
   dateTwoChange: null,
   timeOneChange: null,
   timeTwoChange: null,
-  initialState,
+  state: initialState,
 };
 
 const Context = createContext(defaultContextObj);
@@ -70,11 +70,9 @@ const Context = createContext(defaultContextObj);
 const PickUpDropOffReducer = (state: StateType, action: Action): StateType => {
   switch(action.type) {
     case 'LOCATION_ONE': 
-      state.location1 = action.payload;
-      return state;
+      return { ...state, location1: action.payload };
     case 'LOCATION_TWO': 
-      state.location2 = action.payload;
-      return state;
+      return { ...state, location2: action.payload };
     default: {
       return state;
     }
@@ -84,6 +82,8 @@ const PickUpDropOffReducer = (state: StateType, action: Action): StateType => {
 export const PickUpDropOffContext = ({ children }: ContextProps) => {
   const [state, dispatch] = useReducer(PickUpDropOffReducer, initialState);
   
+  useEffect(() => console.log(state), [state])
+
   const locationOneChange: Dispatch = (payload: string) => dispatch({ type: ActionTypes.location1, payload: payload });
   const locationTwoChange: Dispatch = (payload: string) => dispatch({ type: ActionTypes.location2, payload: payload });
   const dateOneChange: Dispatch = (payload: string) => dispatch({ type: ActionTypes.date1, payload: payload });
@@ -98,12 +98,11 @@ export const PickUpDropOffContext = ({ children }: ContextProps) => {
     dateTwoChange,
     timeOneChange,
     timeTwoChange,
-    initialState,
+    state,
   };
 
   return (
-    <Context.Provider
-      value={defaultContextObject}>
+    <Context.Provider value={defaultContextObject}>
       {children}
     </Context.Provider>
   )

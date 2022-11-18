@@ -1,15 +1,29 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import { LocationSwitcherWrapper } from './styles';
+import { usePickUpDropOffContext } from '../../contexts/PickUpDropOffContext';
 
 const LocationSwitcher: FC = () => {
+  const { state, locationOneChange, locationTwoChange } = usePickUpDropOffContext();
+
+  useEffect(() => console.log(state), [state])
+   
+  const swapLocations = (): void => {
+    locationOneChange(state.location2);
+    locationTwoChange(state.location1);
+  };
+
   return (
-    <LocationSwitcherWrapper>
+    <LocationSwitcherWrapper onClick={swapLocations}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.16051 3.83577L7.16051 17.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M3.08273 7.93188L7.1605 3.83522L11.2383 7.93188" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M17.0887 20.1671L17.0887 6.54934" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M21.1665 16.071L17.0887 20.1677L13.0109 16.071" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M3.83584 16.8396H17.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7.93188 20.9172L3.83522 16.8394L7.93188 12.7617" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20.1672 6.91109L6.54946 6.91109" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16.0711 2.83344L20.1677 6.91121L16.0711 10.989" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.83584 16.8396H17.4536" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7.93188 20.9172L3.83522 16.8394L7.93188 12.7617" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20.1672 6.91109L6.54946 6.91109" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16.0711 2.83344L20.1677 6.91121L16.0711 10.989" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </LocationSwitcherWrapper>
   )
