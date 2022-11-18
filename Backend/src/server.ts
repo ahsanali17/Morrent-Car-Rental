@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 import MongoStore from 'connect-mongo';
 import bodyparser from 'body-parser';
+import cors from 'cors';
 
 import { config } from './config/config';
 import passportSetup from './config/passport';
@@ -15,6 +16,7 @@ import authRoutes from './routes/Auth';
 import stripeRoutes from './routes/Stripe';
 
 const routerServer: Application = express();
+const CLIENT_LINK = 'http://localhost:5173';
 
 routerServer.use(bodyparser.json());
 routerServer.use(bodyparser.urlencoded({ extended: true }));
@@ -24,6 +26,7 @@ routerServer.use(
 		secret: 'black cat',
 		resave: false,
 		saveUninitialized: false,
+		cookie: { maxAge: 1000 },
 		store: MongoStore.create({ mongoUrl: config.mongo.url })
 	})
 );
@@ -74,6 +77,8 @@ const StartServer = () => {
 
 		next();
 	});
+
+	routerServer.use(cors({ credentials: true, origin: CLIENT_LINK }));
 
 	/** Routes */
 	routerServer.use('/cars', carRoutes);
