@@ -2,11 +2,10 @@ import { FC, useContext } from "react"
 
 import { CarsListWrapper, CarsListItems } from "./styles"
 import { CarCard } from "../"
-import { CarsContext, CarType } from "../../contexts/CarContext"
+import { CarsContext, CarType } from "../../contexts/CarsContext"
 
-
-type carListProps={
-  searchItems?:CarType[]
+type carListProps = {
+  searchItems?: CarType[]
 }
 
 //  I am trying assert
@@ -28,7 +27,7 @@ const CarsList = ({ searchItems }: carListProps) => {
       {searchItems && (
         <CarsListWrapper>
           <CarsListItems>
-            {searchItems.map((searchItem:any) => (
+            {searchItems.map((searchItem: any) => (
               <CarCard car={searchItem} />
             ))}
           </CarsListItems>

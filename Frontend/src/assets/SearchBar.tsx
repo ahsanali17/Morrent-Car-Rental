@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import styled from "styled-components"
 
-import { CarsContext } from "../contexts/CarContext"
+import { CarsContext } from "../contexts/CarsContext"
 
 const Icon = styled.input`
   margin: 15px;
@@ -17,28 +17,32 @@ const Icon = styled.input`
 
 const SearchBar = () => {
   const context = useContext(CarsContext)
-  const { addToQuery, searchActive } = context
-  const [active, setActive] = useState(false)
-  const [query, setQuery] = useState("")
-  const [search, setSearch] = useState([])
+  const { pathname } = useLocation()
+  const { addToQuery } = context
+  const [term, setTerm] = useState("")
+  const [debounceTerm, setDebounceTerm] = useState("")
   const navigate = useNavigate()
-  console.log(active)
+  const queryString = useLocation().search
+  const queryParams = new URLSearchParams(queryString)
+  const q = queryParams.get("query") as string
+  console.log(q, term)
+
   useEffect(() => {
-    addToQuery(query)
-    if (query.length!=0) {  // her I want react to go to the search component (Searchfilter component)as soon as the user types where the search results are disyyplyed
-      navigate(`/search?query=${query}`)
-      setActive(true)
+    const timer = setTimeout(() => {
+      setTerm(debounceTerm)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [debounceTerm])
+  // console.log(pathname)
+  useEffect(() => {
+    // if(q!=term) setTerm(q)
+    addToQuery(term)
+    if (term.length != 0) {
+      navigate(`/search?query=${term}`)
     } else {
-      setActive(false)
-      // navigate(-1)
+      if (pathname === "/search") navigate("/search")
     }
-  }, [query,active])
-
-  useEffect(() => {
-    console.log(active,"active value")
-  }, [active])
-
- 
+  }, [term])
 
   return (
     <>
@@ -46,15 +50,12 @@ const SearchBar = () => {
         type="text"
         placeholder="Search.."
         onChange={(e) => {
-          setQuery(e.target.value)
+          setDebounceTerm(e.target.value)
         }}
-        value={query}
+        value={debounceTerm}
         name="search"
       />
-      {/* <button onClick={(e) => handleClick(e)}>click</button> */}
     </>
   )
 }
 export default SearchBar
-
-

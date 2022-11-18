@@ -1,8 +1,21 @@
 import { useContext, useEffect, useState } from "react"
-import { CarsContext } from "../../contexts/CarContext"
+import { CarsContext } from "../../contexts/CarsContext"
 
-import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons';
-import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall } from "./styles"
+import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from "../../assets/icons"
+import {
+  Article,
+  CarCardWrapper,
+  CardRow1,
+  CardRow2,
+  CardRow3,
+  CardRow4,
+  CardSpesification,
+  CardSpesificationDiv,
+  CardTag,
+  CardTitle,
+  PricePerDay,
+  PricePerDaySmall,
+} from "./styles"
 
 type CarCardType = {
   car: {}

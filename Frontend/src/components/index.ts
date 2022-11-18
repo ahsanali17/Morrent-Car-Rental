@@ -1,5 +1,3 @@
-import SearchFilter from "../pages/SearchFilter/SearchFilter"
-
 export { default as Header } from "./Header/Header"
 export { default as FeaturedCards } from "./FeaturedCards/FeaturedCards"
 export { default as SingleFeaturedCard } from "./SingleFeaturedCard/SingleFeaturedCard"
@@ -15,4 +13,4 @@ export { default as CarCard } from "./CarCard/CarCard"
 export { default as Footer } from "./Footer/Footer"
 export { default as ButtonBlueLg } from "./ButtonBlueLg"
 export { default as ButtonLightBlueLg } from "./ButtonLightBlueLg"
-export default SearchFilter
+export { default as Filter } from "./Filter/Filter"
