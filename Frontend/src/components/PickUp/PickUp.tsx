@@ -1,8 +1,8 @@
 import { FC } from "react";
-import DownArrow from "../../assets/icons/DownArrow";
-import Title from "../../assets/icons/PickupTitle";
 
-import { PickUpHeaderContainer, PickUpHeader, PickUpLabel, PickUpDiv, PickUpDiv2, PickUpItem, PickUpTitle, PickUpWrapper, SelectCity, SelectDiv } from "./styles";
+import { PickUpHeaderContainer, PickUpHeader, DropDownArrow, PickUpLabel, PickUpDiv, PickUpDiv2, PickUpItem, PickUpTitle, PickUpWrapper, SelectCity, SelectDiv } from "./styles";
+
+import { DownArrow } from "../../assets/icon";
 
 const PickUp: FC = () => {
   return (
@@ -16,21 +16,21 @@ const PickUp: FC = () => {
           <PickUpTitle>Locations</PickUpTitle>
           <SelectDiv>
             <SelectCity>Select City</SelectCity>
-            <DownArrow />
+            <DropDownArrow alt="dropdown" src={DownArrow} />
           </SelectDiv>
         </PickUpDiv>
         <PickUpDiv2>
           <PickUpTitle>Date</PickUpTitle>
           <SelectDiv>
-            <SelectCity>Select Your Date</SelectCity>
-            <DownArrow />
+            <SelectCity>Select Date</SelectCity>
+            <DropDownArrow alt="dropdown" src={DownArrow} />
           </SelectDiv>
         </PickUpDiv2>
         <PickUpDiv>
           <PickUpTitle>Time</PickUpTitle>
           <SelectDiv>
-            <SelectCity>Select your time</SelectCity>
-            <DownArrow />
+            <SelectCity>Select Time</SelectCity>
+            <DropDownArrow alt="dropdown" src={DownArrow} />
           </SelectDiv>
         </PickUpDiv>
       </PickUpItem>
