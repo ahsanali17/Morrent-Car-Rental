@@ -1,7 +1,8 @@
 import React from 'react'
-import CarCard from '../CarCard/CarCard'
-import CarsList from './CarsList'
+
 import { PopularCarDiv, PopularCarHorizontal, PopularCarSection, PopularCarTitle, PopularCarViewAll } from './styles'
+
+import CarCard from '../CarCard/CarCard'
 
 const PopularCar = () => {
     return (
@@ -11,18 +12,12 @@ const PopularCar = () => {
                 <PopularCarViewAll>View All</PopularCarViewAll>
             </PopularCarDiv>
             <PopularCarHorizontal>
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
-                <CarCard />
+                {/* <CarsList /> */}
+
+                {/* dummy content */}
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((car) => (
+                    <CarCard car={car} />
+                ))}
             </PopularCarHorizontal>
         </PopularCarSection>
     )

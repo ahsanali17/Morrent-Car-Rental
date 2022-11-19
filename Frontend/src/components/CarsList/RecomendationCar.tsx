@@ -1,15 +1,16 @@
 import React from 'react'
-import CarCard from '../CarCard/CarCard'
-import CarsList from './CarsList'
-import { PopularCarDiv, PopularCarHorizontal, PopularCarTitle, PopularCarViewAll } from './styles'
+
+import { PopularCarTitle, PopularCarViewAll, RecommendedCarDiv } from './styles'
+
+import CarsList from './Cars'
 
 const RecomendationCar = () => {
     return (
         <div style={{ display: 'flex', flexDirection: "column" }}>
-            <PopularCarDiv>
+            <RecommendedCarDiv>
                 <PopularCarTitle>Recomendation Car</PopularCarTitle>
                 <PopularCarViewAll>View All</PopularCarViewAll>
-            </PopularCarDiv>
+            </RecommendedCarDiv>
             <CarsList />
         </div>
     )
