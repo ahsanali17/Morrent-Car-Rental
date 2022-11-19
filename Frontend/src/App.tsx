@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ScrollToTop } from './components';
@@ -14,19 +14,18 @@ const App: FC = () => {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Router>
-          <ScrollToTop>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/add-car" element={<AddCar />} />
-              <Route path="/car-details" element={<CarDetails />} />
-              <Route path="/category" element={<Category />} />
-            </Routes>
-          </ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/add-car" element={<AddCar />} />
+            <Route path="/car-details" element={<CarDetails />} />
+            <Route path="/category" element={<Category />} />
+            <Route path="/search/:q" />
+          </Routes>
         </Router>
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
 export default App;

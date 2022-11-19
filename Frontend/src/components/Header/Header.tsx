@@ -9,6 +9,20 @@ import SearchBar from "../SearchBar/SearchBar";
 
 
 const Header: FC = () => {
+  const ServerLink = "http://localhost:9090";
+
+  const userObject = useContext(UserContextObj);
+  console.log("Data:", userObject?._id);
+
+  const login = () => {
+    // The link below will change to the deployed server endpoint in the future, currently it is using the server running on localhost
+    window.open(`${ServerLink}/auth/google/login`, "_self");
+  };
+
+  const logout = () => {
+    window.open(`${ServerLink}/auth/google/logout`, "_self");
+  };
+
   return (
     <HeaderWrapper>
       <Link to="/">
@@ -24,7 +38,7 @@ const Header: FC = () => {
         </Link>
       </HeaderFeaturesContainer>
     </HeaderWrapper>
-  )
-}
+  );
+};
 
 export default Header;
