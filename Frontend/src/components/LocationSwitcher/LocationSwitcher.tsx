@@ -1,12 +1,10 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 
 import { LocationSwitcherWrapper } from './styles';
 import { usePickUpDropOffContext } from '../../contexts/PickUpDropOffContext';
 
 const LocationSwitcher: FC = () => {
   const { state, locationOneChange, locationTwoChange } = usePickUpDropOffContext();
-
-  useEffect(() => console.log(state), [state])
    
   const swapLocations = (): void => {
     locationOneChange(state.location2);
