@@ -5,4 +5,4 @@ export { default as SettingIcon } from './SettingIcon';
 export { default as AvatarIcon } from './AvatarIcon';
 export { default as PickUpBg } from './PickUpBg';
 export { default as PickUpBg2 } from './PickUpBg2';
-export { default as SearchBar } from './SearchBar';
+export { default as SearchBar } from '../components/SearchBar';

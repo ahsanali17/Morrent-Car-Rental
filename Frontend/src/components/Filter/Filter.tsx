@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import styled from "styled-components"
+
 import { CarsContext } from "../../contexts/CarsContext"
 import { ActionKind } from "../../contexts/CarsContext"
 
@@ -15,163 +16,90 @@ export const FilterStyle = styled.div`
     height: 86vh;
   }
 `
-export default function Filter() {
-  const { dispatch } = useContext(CarsContext)
 
-  const [filterData, setFilterData] = useState({
-    sport: false,
-    suv: false,
-    mvp: false,
-    sedan: false,
-    coupe: false,
-    hatchback: false,
-    two: false,
-    four: false,
-    six: false,
-    eight: false,
-    price: 0,
-  })
+type FilterDataType = {
+  title: string
+  options: string[]
+}[]
+
+
+export default function Filter() {
+  const filterData: FilterDataType = [
+    {
+      title: "TYPE",
+      options: ["sport", "suv", "mvp", "sedan", "coupe", "hatchback"],
+    },
+    {
+      title: "CAPACITY",
+      options: ["2 Persons", "4 persons", "6 persons", "8 persons"],
+    },
+  ]
+ 
+  const { dispatch } = useContext(CarsContext)
+  const [checked, setChecked] = useState<string[]>([])
+  const [price, setPrice] = useState<string>("0")
+  console.log(checked)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked, value, type } = e.target
-    setFilterData((prevData) => {
-      console.log("value:", value, "name:", name)
-      return {
-        ...prevData,
-        [name]: type === "checkbox" ? checked : value,
+    const newChecks = [...checked]
+    console.log(e.target.value)
+    if (e.target.type === "checkbox") {
+      if (e.target.checked) setChecked([...newChecks, e.target.value])
+      else {
+        newChecks.splice(checked.indexOf(e.target.value), 1)
+        setChecked([...newChecks])
       }
-    })
+    } else {
+      setPrice((e.target.value))
+    }
   }
   useEffect(() => {
-    dispatch({ type: ActionKind.Filter_Query, payload: filterData })
-  }, [filterData])
+    dispatch({ type: ActionKind.Filter_Type_Query, payload: checked })
+  }, [checked])
+  useEffect(() => {
+    dispatch({ type: ActionKind.Filter_Price_Query, payload: parseInt(price) })
+  }, [price])
 
   return (
     <FilterStyle>
-      <h4>TYPE</h4>
+      {filterData.map((data) => {
+        return (
+          <>
+            <h4>{data.title}</h4>
+            <form>
+              {data.options.map((option) => {
+                return (
+                  <>
+                    <input
+                      type="checkbox"
+                      id={option}
+                      onChange={(e) => {
+                        handleChange(e)
+                      }}
+                      name={option}
+                      value={option}
+                    />
+                    <label htmlFor={option}>{option}</label>
+                  </>
+                )
+              })}
+            </form>
+            <br />
+            <hr />
+          </>
+        )
+      })}
       <form>
-        <input
-          type="checkbox"
-          id="Sport"
-          checked={filterData.sport}
-          onChange={(e) => {
-            handleChange(e)
-            console.log(filterData.sport)
-          }}
-          name="sport"
-          value="sport"
-        />
-        <label htmlFor="Sport">Sport</label>
-        <input
-          type="checkbox"
-          id="SUV"
-          checked={filterData.suv}
-          onChange={(e) => handleChange(e)}
-          name="suv"
-          value="suv"
-        />
-        <label htmlFor="SUV">SUV</label>
-        <input
-          type="checkbox"
-          id="MVP"
-          checked={filterData.mvp}
-          onChange={(e) => {
-            handleChange(e)
-          }}
-          name="mvp"
-          value="mvp"
-        />
-        <label htmlFor="MVP">MVP</label>
-        <input
-          type="checkbox"
-          id="Sedan"
-          checked={filterData.sedan}
-          onChange={(e) => handleChange(e)}
-          name="sedan"
-          value="sedan"
-        />
-        <label htmlFor="Sedan">Sedan</label>
-        <input
-          type="checkbox"
-          id="Coupe"
-          checked={filterData.coupe}
-          onChange={(e) => handleChange(e)}
-          name="coupe"
-          value="coupe"
-        />
-        <label htmlFor="Coupe">Coupe</label>
-        <input
-          type="checkbox"
-          id="Hatchback"
-          checked={filterData.hatchback}
-          onChange={(e) => handleChange(e)}
-          name="hatchback"
-          value="hatchback"
-        />
-        <label htmlFor="Hatchback">Hatchback</label>
-        <br />
-      </form>
-      <br />
-      <hr />
-
-      <h4>CAPACITY</h4>
-      <form>
-        <input
-          type="checkbox"
-          id="2"
-          checked={filterData.two}
-          onChange={(e) => handleChange(e)}
-          name="two"
-          value={2}
-        />
-        <label htmlFor="2">2</label>
-        <input
-          type="checkbox"
-          id="4"
-          checked={filterData.four}
-          onChange={(e) => handleChange(e)}
-          name="four"
-          value={4}
-        />
-        <label htmlFor="4">4</label>
-        <input
-          type="checkbox"
-          id="6"
-          checked={filterData.six}
-          onChange={(e) => handleChange(e)}
-          name="six"
-          value={6}
-        />
-        <label htmlFor="6">6</label>
-        <input
-          type="checkbox"
-          id="8"
-          checked={filterData.eight}
-          onChange={(e) => handleChange(e)}
-          name="eight"
-          value={8}
-        />
-        <label htmlFor="8">8</label>
-        <br />
-      </form>
-      <br />
-      <hr />
-
-      <h4>Price</h4>
-      <form>
+        <h4>{"PRICE"}</h4>
         <input
           type="range"
-          id="price"
-          checked={filterData.coupe}
+          id={"PRICE"}
           onChange={(e) => handleChange(e)}
-          name="price"
-          value={filterData.price}
+          name={"PRICE"}
         />
-        <label htmlFor="2">Price Range- {filterData.price}</label>
-
+        <label htmlFor={"PRICE"}>Price Range- ${price}</label>
         <br />
       </form>
-      <br />
-      <hr />
     </FilterStyle>
   )
 }

@@ -25,7 +25,6 @@ const SearchBar = () => {
   const queryString = useLocation().search
   const queryParams = new URLSearchParams(queryString)
   const q = queryParams.get("query") as string
-  console.log(q, term)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,9 +32,7 @@ const SearchBar = () => {
     }, 1000)
     return () => clearTimeout(timer)
   }, [debounceTerm])
-  // console.log(pathname)
   useEffect(() => {
-    // if(q!=term) setTerm(q)
     addToQuery(term)
     if (term.length != 0) {
       navigate(`/search?query=${term}`)

@@ -6,17 +6,20 @@ import { SearchWrapper } from "./styles"
 
 export default function SearchFilter() {
   const context = useContext(CarsContext)
-  const { cars, searchItems, query, addToSearch,searchFilter } = context
+  const { cars, searchItems, query, addToSearch, searchFilter } = context
 
   useEffect(() => {
-    console.log("useEffect", query)
-    const searchCarList = cars.filter(
-      (car) =>
-        car.car_brand.toLowerCase().includes(query) ||
-        car.car_name.toLowerCase().includes(query)
-    )
+    if (query.length == 0) {
+      addToSearch(cars)
+    } else {
+      const searchCarList = cars.filter(
+        (car) =>
+          car.car_brand.toLowerCase().includes(query) ||
+          car.car_name.toLowerCase().includes(query)
+      )
 
-    addToSearch(searchCarList)
+      addToSearch(searchCarList)
+    }
   }, [query])
 
   return (

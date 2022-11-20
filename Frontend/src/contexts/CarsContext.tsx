@@ -9,7 +9,8 @@ export enum ActionKind {
   Delete_Car = "DELETE_CAR",
   Add_to_Query = "ADD_TO_QUERY",
   Add_To_Search = "ADD_TO_SEARCH",
-  Filter_Query = "FILTER_QUERY",
+  Filter_Type_Query = "FILTER__TYPE_QUERY",
+  Filter_Price_Query = "FILTER__PRICE_QUERY",
 }
 
 //car object type
@@ -24,27 +25,14 @@ export type CarType = {
   isFavourite: Boolean
 }
 
-type FilterQueryType = {
-  sport: boolean
-  suv: boolean
-  mvp: boolean
-  sedan: boolean
-  coupe: boolean
-  hatchback: boolean
-  two: boolean
-  four: boolean
-  six: boolean
-  eight: boolean
-  price: number
-}
-
 // Array of objects for cars + array of object of cars to be added in cart
 export type State = {
   cars: CarType[]
   searchItems: CarType[]
   filterItems: CarType[]
   query: string
-  filterQuery: FilterQueryType
+  filterType: string[]
+  filterPrice: number
 }
 
 //--
@@ -53,19 +41,8 @@ const initialState: State = {
   searchItems: [],
   filterItems: [],
   query: "",
-  filterQuery: {
-    sport: false,
-    suv: false,
-    mvp: false,
-    sedan: false,
-    coupe: false,
-    hatchback: false,
-    two: false,
-    four: false,
-    six: false,
-    eight: false,
-    price: 0,
-  },
+  filterType: [],
+  filterPrice: 0,
 }
 
 type CarsContextProviderProps = {
@@ -78,22 +55,27 @@ type CarsContextType = {
   filterItems: CarType[]
   searchItems: CarType[]
   query: string
-  filterQuery: FilterQueryType
+  filterType: string[]
+  filterPrice: number
   dispatch: React.Dispatch<Action>
   addToFavourite: (id: number) => void
   createCar: (car: CarType, e: React.FormEvent<HTMLInputElement>) => void
   deleteCar: (id: number) => void
   addToQuery: (q: string) => void
   addToSearch: (s: CarType[]) => void
-  searchFilter: (s: CarType[]) => CarType[]
+  searchFilter: (c: CarType[]) => CarType[]
 }
 
 const CarsContext = createContext<CarsContextType>({} as CarsContextType)
 const { Provider } = CarsContext
 
-type FilterQueryAction = {
-  type: ActionKind.Filter_Query
-  payload: FilterQueryType
+type FilterTypeAction = {
+  type: ActionKind.Filter_Type_Query
+  payload: string[]
+}
+type FilterPriceAction = {
+  type: ActionKind.Filter_Price_Query
+  payload: number
 }
 
 type QueryAction = {
@@ -112,7 +94,7 @@ type CarAction = {
     | ActionKind.Add_To_Search
   payload: CarType[]
 }
-type Action = CarAction | QueryAction | FilterQueryAction
+type Action = CarAction | QueryAction | FilterTypeAction | FilterPriceAction
 
 function carsReducer(state: State, action: Action): State {
   switch (action.type) {
@@ -132,8 +114,10 @@ function carsReducer(state: State, action: Action): State {
       return { ...state, searchItems: action.payload }
     case ActionKind.Add_to_Query:
       return { ...state, query: action.payload }
-    case ActionKind.Filter_Query:
-      return { ...state, filterQuery: action.payload }
+    case ActionKind.Filter_Type_Query:
+      return { ...state, filterType: action.payload }
+    case ActionKind.Filter_Price_Query:
+      return { ...state, filterPrice: action.payload }
 
     default:
       return state
@@ -223,7 +207,6 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
 
     if (response.ok) {
       const json = response.json()
-      //dispatch to update the store
       dispatch({ type: ActionKind.Is_Favourite, payload: carsUpdatedList })
     }
   }
@@ -236,72 +219,16 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
     dispatch({ type: ActionKind.Add_To_Search, payload: searchCarList })
   }
 
-  const searchFilter = (searchCatList: CarType[]) => {
-    let filteredCars: CarType[] = []
-    let sport: CarType[] = []
-    let sedan: CarType[] = []
-    let suv: CarType[] = []
-    let mvp: CarType[] = []
-    let coupe: CarType[] = []
-    let hatchback: CarType[] = []
-    let capacityTwo: CarType[]=[]
-    let capacityFour: CarType[]=[]
-    let capacitySix: CarType[]=[]
-    let capacityEight: CarType[]=[]
-    let price: CarType[]=[]
+  const searchFilter = (searchCars: CarType[]) => {
+    let filteredCars = searchCars
+    filteredCars = searchCars.filter((car) =>
+      state.filterType.includes(car.type_car)
+    )
+    filteredCars = searchCars.filter(
+      (car) => state.filterPrice < car.daily_rate
+    )
 
-    if (state.filterQuery.sport)
-      sport = filteredCars.filter((car) => car.type_car == "sport")
-
-    if (state.filterQuery.suv)
-      suv = filteredCars.filter((car) => car.type_car == "suv")
-
-    if (state.filterQuery.mvp)
-      mvp = filteredCars.filter((car) => car.type_car == "mvp")
-
-    if (state.filterQuery.sedan)
-      sedan = filteredCars.filter((car) => car.type_car == "sedan")
-
-    if (state.filterQuery.coupe)
-      coupe = filteredCars.filter((car) => car.type_car == "coupe")
-
-    if (state.filterQuery.hatchback)
-      hatchback = filteredCars.filter((car) => car.type_car == "hatchback")
-
-    if (state.filterQuery.two)
-      capacityTwo = filteredCars.filter((car) => car.seat_capacity <= 2)
-
-    if (state.filterQuery.four)
-      capacityFour = filteredCars.filter((car) => car.seat_capacity <= 4)
-
-    if (state.filterQuery.six)
-      capacitySix = filteredCars.filter((car) => car.seat_capacity <= 6)
-
-    if (state.filterQuery.eight)
-      capacityEight = filteredCars.filter((car) => car.seat_capacity <= 8)
-
-      
-      if (state.filterQuery.price>0)
-      price= filteredCars.filter((car) => car.daily_rate >= state.filterQuery.price)
-
-    filteredCars = [
-      ...suv,
-      ...mvp,
-      ...mvp,
-      ...sedan,
-      ...coupe,
-      ...sport,
-      ...capacityTwo,
-      ...capacityFour,
-      ...capacitySix,
-      ...capacityEight,
-      ...price
-    ]
-    if (filteredCars.length == 0) {
-      return state.searchItems
-    } else {
-      return filteredCars
-    }
+    return filteredCars
   }
 
   return (
