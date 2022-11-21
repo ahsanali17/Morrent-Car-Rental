@@ -198,7 +198,19 @@ export const PricePerDaySmall = styled.span`
   }
 `;
 
+export const RentNowButton = styled.button`
+  width: 120px;
+  height: 44px;
+  border: none;
+  border-radius: 4px;
+  
+  font-weight: var(--font-semi-bold);
 
+  color: var(--color-white);
+  background-color: var(--color-blue-primary);
+  
+  cursor: pointer;
+`;
 
 
 

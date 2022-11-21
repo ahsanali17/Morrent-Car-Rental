@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const UpDownButtonWrapper = styled.div`
+export const LocationSwitcherWrapper = styled.div`
     display: flex;
     grid-area: updown-button;
     width: clamp(40px, 60px, 80px);
@@ -11,4 +11,6 @@ export const UpDownButtonWrapper = styled.div`
     justify-self: center;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
 `;

@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react"
 import { CarsContext } from "../../contexts/CarContext"
 
 import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from '../../assets/icons';
-import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall } from "./styles"
+import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall, RentNowButton} from "./styles";
+import { useModalContext } from "../../contexts/ModalContext";
 
 type CarCardType = {
   car: {}
@@ -12,7 +13,8 @@ const CarCard = ({ car }: CarCardType) => {
   const context = useContext(CarsContext)
   const { addToFavourite } = context
 
-  useEffect(() => {})
+
+  const { toggleModal } = useModalContext();
 
   return (
     <CarCardWrapper>
@@ -47,7 +49,7 @@ const CarCard = ({ car }: CarCardType) => {
             </PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
-          <RentNowBtn />
+          <RentNowButton onClick={toggleModal}>Rent Now</RentNowButton>
         </CardRow4>
       </Article>
     </CarCardWrapper>

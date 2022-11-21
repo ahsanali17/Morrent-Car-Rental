@@ -4,12 +4,15 @@ export { default as SingleFeaturedCard } from './SingleFeaturedCard/SingleFeatur
 export { default as SingleFeaturedCard2 } from './SingleFeaturedCard/SingleFeaturedCard2';
 export { default as PickUpDropOff } from './PickUpDropOff/PickUpDropOff';
 export { default as PickUp } from './PickUp/PickUp';
-export { default as UpDownButton } from './UpDownButton/UpDownButton';
+export { default as LocationSwitcher } from './LocationSwitcher/LocationSwitcher';
 export { default as DropOff } from './DropOff/DropOff';
 export { default as CarsList } from './CarsList/CarsList';
 export { default as PopularCar } from './CarsList/PopularCar';
 export { default as RecomendationCar } from './CarsList/RecomendationCar';
 export { default as CarCard } from './CarCard/CarCard';
 export { default as Footer } from './Footer/Footer';
+export { default as PurchaseConfirmation } from './PurchaseConfirmation/PurchaseConfirmation';
+export { default as DropDown } from './DropDown/DropDown';
+export { default as Calender } from './Calender/Calender';
 export { default as ButtonBlueLg } from './ButtonBlueLg';
 export { default as ButtonLightBlueLg } from './ButtonLightBlueLg';
