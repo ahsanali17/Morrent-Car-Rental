@@ -1,15 +1,55 @@
-import { FC } from "react";
-import CarIcon from "../../assets/icons/CarIcon";
-import GasIcon from "../../assets/icons/GasIcon";
-import Liked from "../../assets/icons/Liked";
-import Users from "../../assets/icons/Users";
+import { FC, useContext, useEffect, useState } from "react"
 
-import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, PricePerDay, PricePerDaySmall, RentNowButton} from "./styles";
-import { useModalContext } from "../../contexts/ModalContext";
+import {
+  Article,
+  CarCardWrapper,
+  CardRow1,
+  CardRow2,
+  CardRow3,
+  CardRow4,
+  CardSpesification,
+  CardSpesificationDiv,
+  CardTag,
+  CardTitle,
+  Icon,
+  PricePerDay,
+  PricePerDaySmall,
+  RentNowButton,
+} from "./styles"
 
-const CarCard: FC = () => {
+import { CarsContext } from "../../contexts/CarContext"
+import { useModalContext } from "../../contexts/ModalContext"
+
+import carImg from "/src/assets/cars/car.png"
+import { FavoriteRed, GasIcon, Users, Wheel } from "../../assets/icon"
+import { Link } from "react-router-dom"
+
+type CarCardType = {
+  car: {}
+}
+const CarCard = ({ car }: CarCardType) => {
   const { toggleModal } = useModalContext();
+  const [isFavourite, setIsFavourite] = useState<boolean>(false)
+  const context = useContext(CarsContext)
+  const { addToFavourite } = context
 
+  useEffect(() => { })
+
+  const features = [
+    {
+      icon: <Icon src={GasIcon} />,
+      title: "90L"
+    },
+    {
+      icon: <Icon src={Wheel} />,
+      type: "Manual"
+    },
+    {
+
+      icon: <Icon src={Users} />,
+      qty: "2 People"
+    },
+  ]
   return (
     <CarCardWrapper>
       <Article>
@@ -17,35 +57,38 @@ const CarCard: FC = () => {
           <CardTitle>
             Koenigsegg <CardTag>Sport</CardTag>
           </CardTitle>
-          <Liked />
+          <Icon src={FavoriteRed} />
         </CardRow1>
         <CardRow2>
-          <img src="./cars/car.png" />
+          <img src={carImg} />
         </CardRow2>
         <CardRow3>
-          <CardSpesificationDiv>
-            <GasIcon />
-            <CardSpesification>90L</CardSpesification>
-          </CardSpesificationDiv>
-          <CardSpesificationDiv>
-            <CarIcon />
-            <CardSpesification>Manual</CardSpesification>
-          </CardSpesificationDiv>
-          <CardSpesificationDiv>
-            <Users />
-            <CardSpesification>2 People</CardSpesification>
-          </CardSpesificationDiv>
+          {
+            features.map((feature) => (
+              <CardSpesificationDiv key={feature.type}>
+                {feature.icon} <CardSpesification>{feature.title}</CardSpesification>
+                <CardSpesification>{feature.type}</CardSpesification>
+                <CardSpesification>{feature.qty}</CardSpesification>
+              </CardSpesificationDiv>
+            ))
+          }
         </CardRow3>
         <CardRow4>
           <div>
-            <PricePerDay>$99.00/<PricePerDaySmall>day</PricePerDaySmall></PricePerDay>
+            <PricePerDay>
+              $99.00/<PricePerDaySmall>day</PricePerDaySmall>
+            </PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
-          <RentNowButton onClick={toggleModal}>Rent Now</RentNowButton>
+          <RentNowButton>
+            <Link to="/car-details" style={{ textDecoration: "none", color: "white" }}>
+              Rent Now
+            </Link>
+          </RentNowButton>
         </CardRow4>
       </Article>
     </CarCardWrapper>
-  );
-};
+  )
+}
 
-export default CarCard;
+export default CarCard
