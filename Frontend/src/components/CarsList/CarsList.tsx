@@ -6,7 +6,7 @@ import { CarsContext, CarType } from "../../contexts/CarsContext"
 
 
 type carListProps = {
-  searchItems?: CarType[]
+  searchItems?: CarType[] 
 }
 
 const CarsList = ({ searchItems }: carListProps) => {
