@@ -26,7 +26,7 @@ routerServer.use(
 		secret: 'black cat',
 		resave: false,
 		saveUninitialized: false,
-		cookie: { maxAge: 1000 },
+		cookie: { maxAge: 3600000 },
 		store: MongoStore.create({ mongoUrl: config.mongo.url })
 	})
 );
