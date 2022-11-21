@@ -1,5 +1,4 @@
 import { FC, useContext, useState } from "react"
-import styled from "styled-components"
 
 import { CarsListWrapper, CarsListItems } from "./styles"
 import { CarCard } from "../"

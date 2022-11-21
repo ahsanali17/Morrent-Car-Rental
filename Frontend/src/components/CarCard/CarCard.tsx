@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react"
-import { CarsContext } from "../../contexts/CarsContext"
+import { FC, useContext, useEffect, useState } from "react"
 
-import { CarIcon, GasIcon, Liked, RentNowBtn, Users } from "../../assets/icons"
 import {
   Article,
   CarCardWrapper,
@@ -13,9 +11,15 @@ import {
   CardSpesificationDiv,
   CardTag,
   CardTitle,
+  Icon,
   PricePerDay,
   PricePerDaySmall,
+  RentNowButton,
 } from "./styles"
+import { CarsContext } from "../../contexts/CarsContext"
+import carImg from "/src/assets/cars/car.png"
+import { FavoriteRed, GasIcon, Users, Wheel } from "../../assets/icon"
+import { Link } from "react-router-dom"
 
 type CarCardType = {
   car: {}
@@ -25,8 +29,22 @@ const CarCard = ({ car }: CarCardType) => {
   const context = useContext(CarsContext)
   const { addToFavourite } = context
 
-  useEffect(() => {})
+  useEffect(() => { })
 
+  const features = [
+    {
+      icon: <Icon src={GasIcon} />,
+      title: "90L"
+    },
+    {
+      icon: <Icon src={Wheel} />,
+      type: "Manual"
+    },
+    {
+      icon: <Icon src={Users} />,
+      qty: "2 People"
+    },
+  ]
   return (
     <CarCardWrapper>
       <Article>
@@ -34,24 +52,21 @@ const CarCard = ({ car }: CarCardType) => {
           <CardTitle>
             Koenigsegg <CardTag>Sport</CardTag>
           </CardTitle>
-          <Liked />
+          <Icon src={FavoriteRed} />
         </CardRow1>
         <CardRow2>
-          <img src="./cars/car.png" />
+          <img src={carImg} />
         </CardRow2>
         <CardRow3>
-          <CardSpesificationDiv>
-            <GasIcon />
-            <CardSpesification>90L</CardSpesification>
-          </CardSpesificationDiv>
-          <CardSpesificationDiv>
-            <CarIcon />
-            <CardSpesification>Manual</CardSpesification>
-          </CardSpesificationDiv>
-          <CardSpesificationDiv>
-            <Users />
-            <CardSpesification>2 People</CardSpesification>
-          </CardSpesificationDiv>
+          {
+            features.map((feature) => (
+              <CardSpesificationDiv key={feature.type}>
+                {feature.icon} <CardSpesification>{feature.title}</CardSpesification>
+                <CardSpesification>{feature.type}</CardSpesification>
+                <CardSpesification>{feature.qty}</CardSpesification>
+              </CardSpesificationDiv>
+            ))
+          }
         </CardRow3>
         <CardRow4>
           <div>
@@ -60,7 +75,11 @@ const CarCard = ({ car }: CarCardType) => {
             </PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>
-          <RentNowBtn />
+          <RentNowButton>
+            <Link to="/car-details" style={{ textDecoration: "none", color: "white" }}>
+              Rent Now
+            </Link>
+          </RentNowButton>
         </CardRow4>
       </Article>
     </CarCardWrapper>
