@@ -1,16 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
+import { ModalProvider } from 'styled-react-modal';
 
 import App from "./App";
-import { CarsContextProvider } from "./contexts/CarContext";
+import { ModalContext } from './contexts/ModalContext';
+import { DropDownContext } from './contexts/DropDownContext';
 import { UserContextProvider } from "./contexts/UserContext";
+import { PickUpDropOffContext } from './contexts/PickUpDropOffContext';
+import { CarsContextProvider } from "./contexts/CarContext"
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <CarsContextProvider>
+    <ModalContext>
+      <ModalProvider>
+      <PickUpDropOffContext>
+      <DropDownContext>
       <UserContextProvider>
-        <App />
+        <CarsContextProvider>
+          <App />
+        </CarsContextProvider>
       </UserContextProvider>
-    </CarsContextProvider>
+      </DropDownContext>
+      </PickUpDropOffContext>
+      </ModalProvider>
+    </ModalContext>
   </React.StrictMode>
 );

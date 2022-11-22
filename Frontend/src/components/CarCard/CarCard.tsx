@@ -18,6 +18,7 @@ import {
 } from "./styles"
 
 import { CarsContext } from "../../contexts/CarContext"
+import { useModalContext } from "../../contexts/ModalContext"
 
 import carImg from "/src/assets/cars/car.png"
 import { FavoriteRed, GasIcon, Users, Wheel } from "../../assets/icon"
@@ -27,6 +28,7 @@ type CarCardType = {
   car: {}
 }
 const CarCard = ({ car }: CarCardType) => {
+  const { toggleModal } = useModalContext();
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
   const context = useContext(CarsContext)
   const { addToFavourite } = context
@@ -43,6 +45,7 @@ const CarCard = ({ car }: CarCardType) => {
       type: "Manual"
     },
     {
+
       icon: <Icon src={Users} />,
       qty: "2 People"
     },

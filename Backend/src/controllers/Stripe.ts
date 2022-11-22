@@ -17,8 +17,8 @@ export const createStripeSession = async (req: Request, res: Response) => {
           },
           quantity: 1,
         }],
-      success_url: `http://localhost:5000/stripe/sucess`,  //temporary url
-      cancel_url: `http://localhost:5000/stripe/canceled`,  ////temporary url
+      success_url: `${req.headers.origin}`,  //temporary url
+      cancel_url: `${req.headers.origin}`,  ////temporary url
     })
   
     return res.json(session);
