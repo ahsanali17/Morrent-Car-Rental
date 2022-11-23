@@ -1,3 +1,5 @@
+
+
 import { FC, useContext, useEffect, useState } from "react"
 
 import {
@@ -24,64 +26,57 @@ import { UserContextObj } from "../../contexts/UserContext"
 import carImg from "/src/assets/cars/car.png"
 import { FavoriteRed, GasIcon, Users, Wheel, Favorite } from "../../assets/icon"
 import { Link } from "react-router-dom"
+import { json } from "stream/consumers"
 import { CarType } from "../../contexts/CarsContext"
-
-type lSType = {
-  [gId: number]: {
-    [carId:number]:boolean
-  }[]
-}
 
 type CarCardType = {
   car: CarType
 }
-
+type CarFavouriteType = {
+  googleId: number
+  isFavourite: boolean
+}
 const CarCard = ({ car }: CarCardType) => {
   const [error, setError] = useState(false)
   const [favourite, setFavourite] = useState<boolean>(false)
   const context = useContext(CarsContext)
   const { googleId } = useContext(UserContextObj)
-  const gId = parseInt(googleId)
   const { addToFavourite } = context
-  const [userValue, setUserValue] = useState(false)
-  const [userId, setUserId] = useState(0)
-  const [carId,setcarId]=useState(car._id)
-  console.log(userId, userValue, favourite, googleId, gId)
-  console.log(userId==gId)
-  useEffect(() => {
-    if (gId) {
-      console.log("ran")
-      let lS: lSType = JSON.parse(localStorage.getItem("isFavourite") as string)
-      if (Object.keys(lS).includes(googleId)) {
-        setUserId(gId)
-        setUserValue(lS[gId][carId])
-        console.log(lS, ":LS")
-      } else {
-        setUserId(gId)
-        setUserValue(false)
-        let lS: lSType = JSON.parse(
-          localStorage.getItem("isFavourite") as string
-        )
-        localStorage.setItem(
-          "isFavourite",
-          JSON.stringify({ ...lS, [gId]:{...[carId],[carId]:userValue} })
-        )
-      }
-    } else {
-      setUserId(0)
-      setUserValue(false)
-    }
-  }, [gId])
+  const [carFavourite, setCarFavourite] = useState<CarFavouriteType>({
+    googleId: parseInt(googleId),
+    isFavourite: false,
+  } as CarFavouriteType)
 
   useEffect(() => {
-    setUserId(userId)
-    setUserValue(favourite)
-    let lS: lSType = JSON.parse(localStorage.getItem("isFavourite") as string)
-    localStorage.setItem(
-      "isFavourite",
-      JSON.stringify({ ...lS,[gId]:{...[carId],[carId]:userValue}})
-    )
-    console.log(lS, ":LS")
+    if (googleId) {
+      console.log("ran")
+      let lS = localStorage.getItem("isFavourite") as string
+      console.log(lS,"LS")
+      if (lS) {
+        setCarFavourite(JSON.parse(lS))
+        console.log(lS, ":LS")
+      } else {
+        setCarFavourite((prevState) => {
+          return {
+            ...prevState,
+            googleId: parseInt(googleId),
+            isFavourite: false,
+          }
+        })
+      }
+    } else {
+      // setError(false)
+      setCarFavourite((prevState) => {
+        return { ...prevState, googleId: 0, isFavourite: false }
+      })
+    }
+  }, [googleId])
+
+  useEffect(() => {
+    setCarFavourite((prevState) => {
+      return { ...prevState, isFavourite: favourite }
+    })
+    localStorage.setItem("isFavourite", JSON.stringify(carFavourite))
   }, [favourite])
   const handleFavourite = (id: number) => {
     setFavourite((prevState) => !prevState)
@@ -111,7 +106,13 @@ const CarCard = ({ car }: CarCardType) => {
             Koenigsegg <CardTag>Sport</CardTag>
           </CardTitle>
           <Icon
-            src={gId ? (userValue ? FavoriteRed : Favorite) : Favorite}
+            src={
+              carFavourite.googleId == parseInt(googleId)
+                ? carFavourite.isFavourite
+                  ? FavoriteRed
+                  : Favorite
+                : Favorite
+            }
             onClick={() => handleFavourite(car._id)}
           />
         </CardRow1>
