@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext } from "react"
 
 import { Link } from "react-router-dom";
 
@@ -10,9 +10,9 @@ import {
   Avatar,
 } from "./styles";
 import LogoutIconButton from "../../assets/LogoutIconButton";
-
+import { NavIcon } from "../../assets"
 import { Favorite, Logo, Notification, Settings } from "../../assets/icon";
-import SearchBar from "../SearchBar/SearchBar";
+import MainSearchBar from "../MainSearchBar"
 import { UserContextObj } from "../../contexts/UserContext";
 import GoogleIconBtn from "../../assets/GoogleIconBtn";
 
@@ -23,20 +23,21 @@ const Header: FC = () => {
 
   const login = () => {
     // The link below will change to the deployed server endpoint in the future, currently it is using the server running on localhost
-    window.open(`${ServerLink}/auth/google/login`, "_self");
-  };
+    window.open(`${ServerLink}/auth/google/login`, "_self")
+  }
 
   const logout = () => {
-    window.open(`${ServerLink}/auth/google/logout`, "_self");
-  };
+    window.open(`${ServerLink}/auth/google/logout`, "_self")
+  }
 
   return (
     <HeaderWrapper>
+      <NavIcon />
       <Link to="/">
         <AppLogo src={Logo} />
       </Link>
       <HeaderFeaturesContainer>
-        <SearchBar showSearchBar={false} showFilter={true} />
+        <MainSearchBar />
         <Icon src={Notification} />
         <Icon src={Favorite} />
         <Icon src={Settings} />

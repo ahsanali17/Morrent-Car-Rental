@@ -6,13 +6,14 @@ export { default as PickUpDropOff } from './PickUpDropOff/PickUpDropOff';
 export { default as PickUp } from './PickUp/PickUp';
 export { default as LocationSwitcher } from './LocationSwitcher/LocationSwitcher';
 export { default as DropOff } from './DropOff/DropOff';
-export { default as CarsList } from './CarsList/Cars';
+export { default as CarsList } from './CarsList/CarsList';
 export { default as PopularCar } from './CarsList/PopularCar';
 export { default as RentedCar } from './CarsList/PopularCar';
 export { default as RecomendationCar } from './CarsList/RecomendationCar';
 export { default as CarCard } from './CarCard/CarCard';
 export { default as Footer } from './Footer/Footer';
 export { default as PurchaseConfirmation } from './PurchaseConfirmation/PurchaseConfirmation';
+export { default as Filter } from "./Filter/Filter"
 export { default as DropDown } from './DropDown/DropDown';
 export { default as Calender } from './Calender/Calender';
 export { default as ProfileComponent } from './Profile/Profile';
