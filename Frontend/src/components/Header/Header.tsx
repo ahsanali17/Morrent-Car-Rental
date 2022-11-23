@@ -26,15 +26,12 @@ const Header: FC = () => {
 
   return (
     <HeaderWrapper>
-      <NavIcon />
       <Link to="/">
         <AppLogo src={Logo} />
       </Link>
       <HeaderFeaturesContainer>
         <MainSearchBar />
-        <Icon src={Notification} />
         <Icon src={Favorite} />
-        <Icon src={Settings} />
         {userObject?.googleId ? (
           <Link to="/profile">
             <Avatar src={userObject?.image} width={43.99} height={43.99} />

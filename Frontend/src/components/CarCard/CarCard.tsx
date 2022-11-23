@@ -1,21 +1,6 @@
 import { FC, useContext, useEffect, useState } from "react"
 
-import {
-  Article,
-  CarCardWrapper,
-  CardRow1,
-  CardRow2,
-  CardRow3,
-  CardRow4,
-  CardSpesification,
-  CardSpesificationDiv,
-  CardTag,
-  CardTitle,
-  Icon,
-  PricePerDay,
-  PricePerDaySmall,
-  RentNowButton,
-} from "./styles"
+import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, Icon, PricePerDay, PricePerDaySmall, RentNowButton } from "./styles"
 
 import { CarsContext } from "../../contexts/CarsContext"
 import { useModalContext } from "../../contexts/ModalContext"
@@ -40,10 +25,9 @@ const CarCard = ({ car }: CarCardType) => {
   const context = useContext(CarsContext)
   const { googleId } = useContext(UserContextObj)
   const { addToFavourite } = context
-  const [carFavourite, setCarFavourite] = useState<CarFavouriteType>({
-    googleId: parseInt(googleId) | 0,
-    isFavourite: false,
-  } as CarFavouriteType)
+  const [carFavourite, setCarFavourite] = useState<CarFavouriteType>({ googleId: parseInt(googleId) | 0, isFavourite: false, } as CarFavouriteType)
+  
+  console.log(car)
 
   useEffect(() => {
     if (googleId) {
@@ -78,7 +62,6 @@ const CarCard = ({ car }: CarCardType) => {
     setFavourite((prevState) => !prevState)
     addToFavourite(id)
   }
-  console.log(googleId)
 
   const features = [
     {
@@ -99,7 +82,7 @@ const CarCard = ({ car }: CarCardType) => {
       <Article>
         <CardRow1>
           <CardTitle>
-            Koenigsegg <CardTag>Sport</CardTag>
+            {car.car_brand} <CardTag>{car.car_body_type}</CardTag>
           </CardTitle>
           <Icon hidden={error} 
             src={
@@ -113,7 +96,7 @@ const CarCard = ({ car }: CarCardType) => {
           />
         </CardRow1>
         <CardRow2>
-          <img src={carImg} />
+          <img src={car.file_path} />
         </CardRow2>
         <CardRow3>
           {features.map((feature) => (
@@ -128,7 +111,7 @@ const CarCard = ({ car }: CarCardType) => {
         <CardRow4>
           <div>
             <PricePerDay>
-              $99.00/<PricePerDaySmall>day</PricePerDaySmall>
+              {car.daily_rate}/<PricePerDaySmall>day</PricePerDaySmall>
             </PricePerDay>
             <PricePerDaySmall>$100.00</PricePerDaySmall>
           </div>

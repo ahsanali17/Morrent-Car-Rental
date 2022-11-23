@@ -1,21 +1,8 @@
 import { FC } from "react"
 import { Link } from "react-router-dom"
 
-import {
-  Header,
-  Footer,
-  AsideLeft,
-  SearchBar,
-  PickUpDropOff,
-  CarsList,
-} from "../../components"
-import {
-  CarDetailsWrapper,
-  Container,
-  MainContent,
-  MoreBtn,
-  MoreDiv,
-} from "./styles"
+import { Header, Footer, AsideLeft, SearchBar, PickUpDropOff, CarsList } from "../../components"
+import { CarDetailsWrapper, Container, MainContent, MoreBtn, MoreDiv } from "./styles"
 
 const Category: FC = () => {
   return (
