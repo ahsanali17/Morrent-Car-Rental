@@ -28,6 +28,7 @@ export default function SearchFilter() {
       <SearchWrapper>
         <Filter />
         <CarsList searchItems={searchFilter(searchItems)} />
+        
       </SearchWrapper>
     </>
   )

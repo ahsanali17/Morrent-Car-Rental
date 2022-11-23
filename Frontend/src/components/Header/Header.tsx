@@ -9,18 +9,17 @@ import {
   AppLogo,
   Avatar,
 } from "./styles"
-
+import LogoutIconButton from "../../assets/LogoutIconButton"
+import { NavIcon } from "../../assets"
 import { Favorite, Logo, Notification, Settings } from "../../assets/icon"
-import AvatarImg from "/src/assets/img/nav-avatar.png"
-// import SearchBar from "../SearchBar/SearchBar";
 import MainSearchBar from "../MainSearchBar"
 import { UserContextObj } from "../../contexts/UserContext"
-import { NavIcon } from "../../assets"
+import GoogleIconBtn from "../../assets/GoogleIconBtn"
 
 const Header: FC = () => {
   const ServerLink = "http://localhost:9090"
-  const userObject = useContext(UserContextObj)
-  // console.log("Data:", userObject?._id);
+  const  {googleId,image}  = useContext(UserContextObj)
+  // console.log("Data:", userObject);
 
   const login = () => {
     // The link below will change to the deployed server endpoint in the future, currently it is using the server running on localhost
@@ -42,11 +41,14 @@ const Header: FC = () => {
         <Icon src={Notification} />
         <Icon src={Favorite} />
         <Icon src={Settings} />
-        {/* {userObject?._id ? <AvatarIcon /> : <GoogleIconBtn onClick={login} />}
-        {userObject?._id && <LogoutIconButton onClick={logout} />} */}
-        <Link to="/profile">
-          <Avatar src={AvatarImg} />
-        </Link>
+        {googleId ? (
+          <Link to="/profile">
+            <Avatar src={image} width={43.99} height={43.99} />
+          </Link>
+        ) : (
+          <GoogleIconBtn onClick={login} />
+        )}
+        {googleId && <LogoutIconButton onClick={logout} />}
       </HeaderFeaturesContainer>
     </HeaderWrapper>
   )

@@ -26,7 +26,7 @@ routerServer.use(
 		secret: 'black cat',
 		resave: false,
 		saveUninitialized: false,
-		cookie: { maxAge: 1000 },
+		cookie: { maxAge: 3600000 },
 		store: MongoStore.create({ mongoUrl: config.mongo.url })
 	})
 );
@@ -64,6 +64,7 @@ const StartServer = () => {
 
 	routerServer.use(express.urlencoded({ extended: true }));
 	routerServer.use(express.json());
+    routerServer.use(cors());
 
 	/** Rules of our API */
 	routerServer.use((req: Request, res: Response, next: NextFunction) => {

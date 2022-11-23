@@ -22,7 +22,6 @@ type FilterDataType = {
   options: string[]
 }[]
 
-
 export default function Filter() {
   const filterData: FilterDataType = [
     {
@@ -34,7 +33,7 @@ export default function Filter() {
       options: ["2 Persons", "4 persons", "6 persons", "8 persons"],
     },
   ]
- 
+
   const { dispatch } = useContext(CarsContext)
   const [checked, setChecked] = useState<string[]>([])
   const [price, setPrice] = useState<string>("0")
@@ -50,7 +49,7 @@ export default function Filter() {
         setChecked([...newChecks])
       }
     } else {
-      setPrice((e.target.value))
+      setPrice(e.target.value)
     }
   }
   useEffect(() => {
@@ -67,22 +66,21 @@ export default function Filter() {
           <>
             <h4>{data.title}</h4>
             <form>
-              {data.options.map((option) => {
-                return (
-                  <>
-                    <input
-                      type="checkbox"
-                      id={option}
-                      onChange={(e) => {
-                        handleChange(e)
-                      }}
-                      name={option}
-                      value={option}
-                    />
-                    <label htmlFor={option}>{option}</label>
-                  </>
-                )
-              })}
+              {data.options.map((option) => (
+                <>
+                  <input
+                    type="checkbox"
+                    id={option}
+                    key={option}
+                    onChange={(e) => {
+                      handleChange(e)
+                    }}
+                    name={option}
+                    value={option}
+                  />
+                  <label htmlFor={option}>{option}</label>
+                </>
+              ))}
             </form>
             <br />
             <hr />

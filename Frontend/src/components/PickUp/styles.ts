@@ -89,7 +89,7 @@ export const PickUpLabel = styled.label`
 export const PickUpTitle = styled.div`
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 120%;
   display: flex;
   align-items: center;

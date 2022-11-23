@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { PopularCarDiv, PopularCarHorizontal, PopularCarSection, PopularCarTitle, PopularCarViewAll } from './styles'
 
 import CarCard from '../CarCard/CarCard'
+import { CarsContext } from '../../contexts/CarsContext'
 
 const PopularCar = () => {
+    const context = useContext(CarsContext)
+
+    const { cars } = context
     return (
         <PopularCarSection>
             <PopularCarDiv>
@@ -15,7 +19,7 @@ const PopularCar = () => {
                 {/* <CarsList /> */}
 
                 {/* dummy content */}
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((car) => (
+                {cars.map((car) => (
                     <CarCard car={car} />
                 ))}
             </PopularCarHorizontal>

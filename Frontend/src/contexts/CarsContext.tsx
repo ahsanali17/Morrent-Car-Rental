@@ -126,12 +126,11 @@ function carsReducer(state: State, action: Action): State {
 
 function CarsContextProvider({ children }: CarsContextProviderProps) {
   const [state, dispatch] = useReducer(carsReducer, initialState)
-  console.log(state)
   // useEffect will run for the first time when this context component renders
   useEffect(() => {
     const fetchcars = async (): Promise<void> => {
       try {
-        const response = await fetch("http://localhost:4000/get")
+        const response = await fetch("http://localhost:9090/get")
         const data = await response.json()
         if (response.ok) {
           dispatch({ type: ActionKind.GetAllCars, payload: data })
@@ -189,8 +188,6 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
   const addToFavourite = async (id: number): Promise<void> => {
     const carsUpdatedList = state.cars.map((car) => {
       if (id == car._id) {
-        // update the local storage
-        localStorage.setItem(`${car._id}`, JSON.stringify(!car.isFavourite))
         return { ...car, isFavourite: !car.isFavourite }
       }
       return car
@@ -220,13 +217,11 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
   }
 
   const searchFilter = (searchCars: CarType[]) => {
-    let filteredCars = searchCars
-    filteredCars = searchCars.filter((car) =>
-      state.filterType.includes(car.type_car)
-    )
-    filteredCars = searchCars.filter(
-      (car) => state.filterPrice < car.daily_rate
-    )
+    const filteredCars = searchCars.filter(
+      (car) =>
+        state.filterType.includes(car.type_car) &&
+        state.filterPrice < car.daily_rate
+    );
 
     return filteredCars
   }

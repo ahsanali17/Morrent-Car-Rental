@@ -1,11 +1,26 @@
-import { createContext, useEffect, useState } from "react";
-import axios from "axios";
-import { AxiosResponse } from "axios";
+import { createContext, useEffect, useState } from "react"
+import axios from "axios"
+import { AxiosResponse } from "axios"
 
-const UserContextObj = createContext({});
+type UserContextProviderProps = {
+  children: React.ReactNode
+}
+type UserContextObjType = {
+  googleId: string
+  image: string
+}
+type userObjectType = {
+  googleId: string
+  image: string
+}
+const UserContextObj = createContext<UserContextObjType>(
+  {} as UserContextObjType
+)
 
-function UserContextProvider(props: any) {
-  const [userObject, setUserObject] = useState<any>();
+function UserContextProvider(props: UserContextProviderProps) {
+  const [userObject, setUserObject] = useState<userObjectType>(
+    {} as userObjectType
+  )
 
   useEffect(() => {
     const fetchUserData = () => {
@@ -16,21 +31,21 @@ function UserContextProvider(props: any) {
           })
           .then((res: AxiosResponse) => {
             if (res.data) {
-              setUserObject(res.data);
+              setUserObject(res.data)
             }
-          });
+          })
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
-    fetchUserData();
-  }, []);
+    }
+    fetchUserData()
+  }, [])
 
   return (
-    <UserContextObj.Provider value={userObject}>
+    <UserContextObj.Provider value={{ ...userObject }}>
       {props.children}
     </UserContextObj.Provider>
-  );
+  )
 }
 
-export { UserContextProvider, UserContextObj };
+export { UserContextProvider, UserContextObj }

@@ -9,4 +9,3 @@ export { default as PickUpBg2 } from './PickUpBg2';
 export { default as CustomProgressBar } from './CustomProgressBar';
 export { default as GoogleIconBtn } from "./GoogleIconBtn";
 export { default as LogoutIconButton } from "./LogoutIconButton";
-
