@@ -73,7 +73,7 @@ const allCars = async (req: Request, res: Response, next: NextFunction) => {
         const searchResults = cars.filter(
           (car) =>
             car.car_brand.toLowerCase().includes(q) ||
-            car.car_name.toLowerCase().includes(q)
+            car.car_title.toLowerCase().includes(q)
         )
 
         res.status(200).json({ searchResults })

@@ -66,7 +66,7 @@ const CarCard = ({ car }: CarCardType) => {
   const features = [
     {
       icon: <Icon src={GasIcon} />,
-      title: "90L",
+      title: `${car.maximum_gasoline}L`,
     },
     {
       icon: <Icon src={Wheel} />,
@@ -74,7 +74,7 @@ const CarCard = ({ car }: CarCardType) => {
     },
     {
       icon: <Icon src={Users} />,
-      qty: "2 People",
+      qty: `${car.seat_capacity} People`,
     },
   ]
   return (
@@ -82,7 +82,7 @@ const CarCard = ({ car }: CarCardType) => {
       <Article>
         <CardRow1>
           <CardTitle>
-            {car.car_brand} <CardTag>{car.car_body_type}</CardTag>
+            {car.car_title} <CardTag>{car.car_body_type}</CardTag>
           </CardTitle>
           <Icon hidden={error} 
             src={
@@ -111,9 +111,9 @@ const CarCard = ({ car }: CarCardType) => {
         <CardRow4>
           <div>
             <PricePerDay>
-              {car.daily_rate}/<PricePerDaySmall>day</PricePerDaySmall>
+              ${car.daily_rate}/<PricePerDaySmall>day</PricePerDaySmall>
             </PricePerDay>
-            <PricePerDaySmall>$100.00</PricePerDaySmall>
+            <PricePerDaySmall>${car.daily_rate}</PricePerDaySmall>
           </div>
           <RentNowButton>
             <Link

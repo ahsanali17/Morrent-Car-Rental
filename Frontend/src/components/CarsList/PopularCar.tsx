@@ -15,6 +15,7 @@ const PopularCar = () => {
   const context = useContext(CarsContext)
 
   const { cars } = context
+  
   return (
     <PopularCarSection>
       <PopularCarDiv>

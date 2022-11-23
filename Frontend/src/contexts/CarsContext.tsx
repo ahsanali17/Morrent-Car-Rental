@@ -16,9 +16,9 @@ export enum ActionKind {
 //car object type
 export type CarType = {
   _id: number
-  car_brand: string
+  car_body_type: string
   type_car: string
-  car_name: string
+  car_title: string
   seat_capacity: number
   maximum_gasoline: number
   daily_rate: number
