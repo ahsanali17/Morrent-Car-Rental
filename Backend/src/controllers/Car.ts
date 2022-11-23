@@ -4,21 +4,38 @@ import mongoose from "mongoose"
 import Car from "../models/Car"
 
 const createCar = async (req: Request, res: Response, next: NextFunction) => {
-	const { car_brand, type_car, car_name, seat_capacity, maximum_gasoline, daily_rate, pickUp_Location, dropOff_Location, availability_From, availability_To } = req.body;
+	const {
+		car_title,
+		car_brand,
+		car_body_type,
+		maximum_gasoline,
+		transmission_type,
+		seat_capacity,
+		daily_rate,
+		pickUp_Location,
+		dropOff_Location,
+		availability_From,
+		availability_To,
+		file_path,
+		uploaded_car_image
+	} = req.body;
 
 	try {
 		const car = new Car({
 			_id: new mongoose.Types.ObjectId(),
+			car_title,
 			car_brand,
-			type_car,
-			car_name,
-			seat_capacity,
+			car_body_type,
 			maximum_gasoline,
+			transmission_type,
+			seat_capacity,
 			daily_rate,
 			pickUp_Location,
 			dropOff_Location,
 			availability_From,
-			availability_To
+			availability_To,
+			file_path,
+			uploaded_car_image
 		});
 
     await car.save()
@@ -56,7 +73,7 @@ const allCars = async (req: Request, res: Response, next: NextFunction) => {
         const searchResults = cars.filter(
           (car) =>
             car.car_brand.toLowerCase().includes(q) ||
-            car.car_name.toLowerCase().includes(q)
+            car.car_title.toLowerCase().includes(q)
         )
 
         res.status(200).json({ searchResults })

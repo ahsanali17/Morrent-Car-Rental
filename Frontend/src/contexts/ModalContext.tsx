@@ -8,11 +8,7 @@ type ContextObjectValue = {
   toggleModal: VoidFunction;
 };
 
-const Context = createContext<ContextObjectValue>({
-  isOpen: false,
-  setIsOpen: () => undefined,
-  toggleModal: () => undefined,
-});
+const Context = createContext<ContextObjectValue>({} as ContextObjectValue);
 
 export const ModalContext = ({ children }: ContextProps) => {
   const [isOpen, setIsOpen] = useState(false);

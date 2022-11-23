@@ -2,13 +2,7 @@ import { FC, useContext } from "react"
 
 import { Link } from "react-router-dom";
 
-import {
-  HeaderWrapper,
-  HeaderFeaturesContainer,
-  Icon,
-  AppLogo,
-  Avatar,
-} from "./styles";
+import { HeaderWrapper, HeaderFeaturesContainer, Icon, AppLogo, Avatar } from "./styles";
 import LogoutIconButton from "../../assets/LogoutIconButton";
 import { NavIcon } from "../../assets"
 import { Favorite, Logo, Notification, Settings } from "../../assets/icon";
@@ -32,15 +26,12 @@ const Header: FC = () => {
 
   return (
     <HeaderWrapper>
-      <NavIcon />
       <Link to="/">
         <AppLogo src={Logo} />
       </Link>
       <HeaderFeaturesContainer>
         <MainSearchBar />
-        <Icon src={Notification} />
         <Icon src={Favorite} />
-        <Icon src={Settings} />
         {userObject?.googleId ? (
           <Link to="/profile">
             <Avatar src={userObject?.image} width={43.99} height={43.99} />

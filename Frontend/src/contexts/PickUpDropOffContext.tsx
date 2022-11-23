@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 import { ContextProps, Dispatch } from '../types/index';
 
@@ -46,24 +46,16 @@ type Action = {
 }
 
 type ContextObject = {
-  locationOneChange: null | Dispatch;
-  locationTwoChange: null | Dispatch;
-  dateOneChange: null | Dispatch;
-  dateTwoChange: null | Dispatch;
-  timeOneChange: null | Dispatch;
-  timeTwoChange: null | Dispatch;
+  locationOneChange: Dispatch;
+  locationTwoChange: Dispatch;
+  dateOneChange: Dispatch;
+  dateTwoChange: Dispatch;
+  timeOneChange: Dispatch;
+  timeTwoChange: Dispatch;
   state: StateType;
 }
 
-const defaultContextObj: ContextObject = {
-  locationOneChange: null,
-  locationTwoChange: null,
-  dateOneChange: null,
-  dateTwoChange: null,
-  timeOneChange: null,
-  timeTwoChange: null,
-  state: initialState,
-};
+const defaultContextObj = {} as ContextObject;
 
 const Context = createContext(defaultContextObj);
 

@@ -1,21 +1,6 @@
 import { FC, useContext, useEffect, useState } from "react"
 
-import {
-  Article,
-  CarCardWrapper,
-  CardRow1,
-  CardRow2,
-  CardRow3,
-  CardRow4,
-  CardSpesification,
-  CardSpesificationDiv,
-  CardTag,
-  CardTitle,
-  Icon,
-  PricePerDay,
-  PricePerDaySmall,
-  RentNowButton,
-} from "./styles"
+import { Article, CarCardWrapper, CardRow1, CardRow2, CardRow3, CardRow4, CardSpesification, CardSpesificationDiv, CardTag, CardTitle, Icon, PricePerDay, PricePerDaySmall, RentNowButton } from "./styles"
 
 import { CarsContext } from "../../contexts/CarsContext"
 import { useModalContext } from "../../contexts/ModalContext"
@@ -42,11 +27,10 @@ const CarCard = ({ car }: CarCardType) => {
   const { googleId } = useContext(UserContextObj)
   const gId = parseInt(googleId)
   const { addToFavourite } = context
-  const [userValue, setUserValue] = useState(false)
-  const [userId, setUserId] = useState(0)
-  const [carId,setcarId]=useState(car._id)
-  console.log(userId, userValue, favourite, googleId, gId)
-  console.log(userId==gId)
+  const [carFavourite, setCarFavourite] = useState<CarFavouriteType>({ googleId: parseInt(googleId) | 0, isFavourite: false, } as CarFavouriteType)
+  
+  console.log(car)
+
   useEffect(() => {
     if (gId) {
       console.log("ran")
@@ -91,7 +75,7 @@ const CarCard = ({ car }: CarCardType) => {
   const features = [
     {
       icon: <Icon src={GasIcon} />,
-      title: "90L",
+      title: `${car.maximum_gasoline}L`,
     },
     {
       icon: <Icon src={Wheel} />,
@@ -99,7 +83,7 @@ const CarCard = ({ car }: CarCardType) => {
     },
     {
       icon: <Icon src={Users} />,
-      qty: "2 People",
+      qty: `${car.seat_capacity} People`,
     },
   ]
   return (
@@ -107,7 +91,7 @@ const CarCard = ({ car }: CarCardType) => {
       <Article>
         <CardRow1>
           <CardTitle>
-            Koenigsegg <CardTag>Sport</CardTag>
+            {car.car_title} <CardTag>{car.car_body_type}</CardTag>
           </CardTitle>
           <Icon
             src={gId ? (userValue ? FavoriteRed : Favorite) : Favorite}
@@ -115,7 +99,7 @@ const CarCard = ({ car }: CarCardType) => {
           />
         </CardRow1>
         <CardRow2>
-          <img src={carImg} />
+          <img src={car.file_path} />
         </CardRow2>
         <CardRow3>
           {features.map((feature) => (
@@ -130,9 +114,9 @@ const CarCard = ({ car }: CarCardType) => {
         <CardRow4>
           <div>
             <PricePerDay>
-              $99.00/<PricePerDaySmall>day</PricePerDaySmall>
+              ${car.daily_rate}/<PricePerDaySmall>day</PricePerDaySmall>
             </PricePerDay>
-            <PricePerDaySmall>$100.00</PricePerDaySmall>
+            <PricePerDaySmall>${car.daily_rate}</PricePerDaySmall>
           </div>
           <RentNowButton>
             <Link

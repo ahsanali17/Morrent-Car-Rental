@@ -4,14 +4,10 @@ import { Header } from "./components"
 import { ThemeProvider } from 'styled-components';
 import { ScrollToTop } from './components';
 import { GlobalStyles } from './globalStyles';
-import { AddCar, CarDetails, Category, Home, Profile,Error, SearchFilter } from './pages';
+import { AddCar, CarDetails, Category, Home, Profile, Error, SearchFilter } from './pages';
 import { theme } from './types/theme-type';
 
-
-
 const App: FC = () => {
- 
-
   return (
     <>
       <GlobalStyles />
