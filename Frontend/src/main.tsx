@@ -7,7 +7,7 @@ import { ModalContext } from './contexts/ModalContext';
 import { DropDownContext } from './contexts/DropDownContext';
 import { UserContextProvider } from "./contexts/UserContext";
 import { PickUpDropOffContext } from './contexts/PickUpDropOffContext';
-import { CarsContextProvider } from "./contexts/CarContext"
+import { CarsContextProvider } from "./contexts/CarsContext"
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -25,4 +25,4 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       </ModalProvider>
     </ModalContext>
   </React.StrictMode>
-);
+)

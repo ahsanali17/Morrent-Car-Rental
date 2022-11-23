@@ -1,40 +1,35 @@
-import React, { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useContext, useEffect } from "react"
 
-// type QType={
-//     q:string
-// }
+import { CarsList, Filter } from "../../components"
+import { CarsContext } from "../../contexts/CarsContext"
+import { SearchWrapper } from "./styles"
 
 export default function SearchFilter() {
-  const [query, setQuery] = useState("")
-  const [search, setSearch] = useState([]) // this will be used to populate jsx
-  const navigate = useNavigate()
-  const { q } = useParams()
+  const context = useContext(CarsContext)
+  const { cars, searchItems, query, addToSearch, searchFilter } = context
 
   useEffect(() => {
-    if (q) setQuery(q)
-    navigate(`/search/${query}`)
-    const Searchcars = async (): Promise<void> => {
-      try {
-        const response = await fetch(`http://localhost:4000/get?q=${query}`)
-        const data = await response.json()
-        if (response.ok) {
-          setSearch(data) // we are getting the full search results based in query
-        }
-      } catch (error) {
-        console.log(error) // Here we receive the error from the backend and can setan error /modal to show the error to user
-      }
+    if (query.length == 0) {
+      addToSearch(cars)
+    } else {
+      const searchCarList = cars.filter(
+        (car) =>
+          car.car_brand.toLowerCase().includes(query) ||
+          car.car_name.toLowerCase().includes(query)
+      )
+
+      addToSearch(searchCarList)
     }
-    Searchcars()
-  }, [query, q])
+  }, [query])
 
-
-
-  console.log(search)
   return (
-    <div>
-      {/* <SearchBar/>
-      <Filter/> */}
-    </div> ///  design a searchbar and filter
+    <>
+      {query && <h3>You are searching for - {`"${query}"`}</h3>}
+      <SearchWrapper>
+        <Filter />
+        <CarsList searchItems={searchFilter(searchItems)} />
+        
+      </SearchWrapper>
+    </>
   )
 }
