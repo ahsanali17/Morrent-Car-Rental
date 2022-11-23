@@ -1,6 +1,6 @@
 import { FC, useContext } from "react"
 
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import {
   HeaderWrapper,
@@ -8,17 +8,17 @@ import {
   Icon,
   AppLogo,
   Avatar,
-} from "./styles"
-import LogoutIconButton from "../../assets/LogoutIconButton"
+} from "./styles";
+import LogoutIconButton from "../../assets/LogoutIconButton";
 import { NavIcon } from "../../assets"
-import { Favorite, Logo, Notification, Settings } from "../../assets/icon"
+import { Favorite, Logo, Notification, Settings } from "../../assets/icon";
 import MainSearchBar from "../MainSearchBar"
-import { UserContextObj } from "../../contexts/UserContext"
-import GoogleIconBtn from "../../assets/GoogleIconBtn"
+import { UserContextObj } from "../../contexts/UserContext";
+import GoogleIconBtn from "../../assets/GoogleIconBtn";
 
 const Header: FC = () => {
-  const ServerLink = "http://localhost:9090"
-  const  {googleId,image}  = useContext(UserContextObj)
+  const ServerLink = "http://localhost:9090";
+  const userObject = useContext(UserContextObj);
   // console.log("Data:", userObject);
 
   const login = () => {
@@ -41,17 +41,17 @@ const Header: FC = () => {
         <Icon src={Notification} />
         <Icon src={Favorite} />
         <Icon src={Settings} />
-        {googleId ? (
+        {userObject?.googleId ? (
           <Link to="/profile">
-            <Avatar src={image} width={43.99} height={43.99} />
+            <Avatar src={userObject?.image} width={43.99} height={43.99} />
           </Link>
         ) : (
           <GoogleIconBtn onClick={login} />
         )}
-        {googleId && <LogoutIconButton onClick={logout} />}
+        {userObject?.googleId && <LogoutIconButton onClick={logout} />}
       </HeaderFeaturesContainer>
     </HeaderWrapper>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

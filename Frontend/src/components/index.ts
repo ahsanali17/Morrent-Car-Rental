@@ -12,8 +12,8 @@ export { default as RentedCar } from './CarsList/PopularCar';
 export { default as RecomendationCar } from './CarsList/RecomendationCar';
 export { default as CarCard } from './CarCard/CarCard';
 export { default as Footer } from './Footer/Footer';
-export { default as Filter } from "./Filter/Filter"
 export { default as PurchaseConfirmation } from './PurchaseConfirmation/PurchaseConfirmation';
+export { default as Filter } from "./Filter/Filter"
 export { default as DropDown } from './DropDown/DropDown';
 export { default as Calender } from './Calender/Calender';
 export { default as ProfileComponent } from './Profile/Profile';

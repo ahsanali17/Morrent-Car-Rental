@@ -2,20 +2,30 @@ import { createContext, useEffect, useState } from "react"
 import axios from "axios"
 import { AxiosResponse } from "axios"
 
+
 type UserContextProviderProps = {
   children: React.ReactNode
 }
 type UserContextObjType = {
-  googleId: string
-  image: string
+  _id: string;
+  googleId: string;
+  displayName: string;
+  firstName: string;
+  lastName: string;
+  image: string;
 }
 type userObjectType = {
-  googleId: string
-  image: string
+  _id: string;
+  googleId: string;
+  displayName: string;
+  firstName: string;
+  lastName: string;
+  image: string;
 }
 const UserContextObj = createContext<UserContextObjType>(
   {} as UserContextObjType
 )
+
 
 function UserContextProvider(props: UserContextProviderProps) {
   const [userObject, setUserObject] = useState<userObjectType>(

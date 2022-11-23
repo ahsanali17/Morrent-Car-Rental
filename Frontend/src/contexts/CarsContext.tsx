@@ -127,13 +127,15 @@ function carsReducer(state: State, action: Action): State {
 function CarsContextProvider({ children }: CarsContextProviderProps) {
   const [state, dispatch] = useReducer(carsReducer, initialState)
   // useEffect will run for the first time when this context component renders
+  console.log(state.cars)
   useEffect(() => {
     const fetchcars = async (): Promise<void> => {
       try {
-        const response = await fetch("http://localhost:9090/get")
+        const response = await fetch("http://localhost:9090/cars/get")
         const data = await response.json()
+        console.log(data)
         if (response.ok) {
-          dispatch({ type: ActionKind.GetAllCars, payload: data })
+          dispatch({ type: ActionKind.GetAllCars, payload: data.car })
         }
       } catch (error) {
         console.log(error) // Here we receive the error from the backend and can setan error /modal to show the error to user
