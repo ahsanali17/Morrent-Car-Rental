@@ -37,7 +37,6 @@ type CarCardType = {
 }
 
 const CarCard = ({ car }: CarCardType) => {
-  const [error, setError] = useState(false)
   const [favourite, setFavourite] = useState<boolean>(false)
   const context = useContext(CarsContext)
   const { googleId } = useContext(UserContextObj)
@@ -54,7 +53,7 @@ const CarCard = ({ car }: CarCardType) => {
       let lS: lSType = JSON.parse(localStorage.getItem("isFavourite") as string)
       if (Object.keys(lS).includes(googleId)) {
         setUserId(gId)
-        setUserValue(lS[gId][carId])
+        setUserValue(false)
         console.log(lS, ":LS")
       } else {
         setUserId(gId)

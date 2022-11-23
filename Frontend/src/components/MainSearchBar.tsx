@@ -33,7 +33,7 @@ const SearchBar = () => {
     return () => clearTimeout(timer)
   }, [debounceTerm])
   useEffect(() => {
-    addToQuery(term)
+    
     if (term.length != 0) {
       navigate(`/search?query=${term}`)
     } else {
