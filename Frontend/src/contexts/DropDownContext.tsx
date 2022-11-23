@@ -13,16 +13,7 @@ type ContextObjectValue = {
   handleOpenMenu4:  VoidFunction;
 };
 
-const Context = createContext<ContextObjectValue>({
-  openMenu: false,
-  openMenu2: false,
-  openMenu3: false,
-  openMenu4: false,
-  handleOpenMenu: () => undefined,
-  handleOpenMenu2: () => undefined,
-  handleOpenMenu3: () => undefined,
-  handleOpenMenu4: () => undefined,
-});
+const Context = createContext<ContextObjectValue>({} as ContextObjectValue);
 
 export const DropDownContext = ({ children }: ContextProps) => {
   const [openMenu, setOpenMenu] = useState(false);
