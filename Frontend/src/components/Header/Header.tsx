@@ -2,13 +2,7 @@ import { FC, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
-import {
-  HeaderWrapper,
-  HeaderFeaturesContainer,
-  Icon,
-  AppLogo,
-  Avatar,
-} from "./styles";
+import { HeaderWrapper, HeaderFeaturesContainer, Icon, AppLogo, Avatar } from "./styles";
 import LogoutIconButton from "../../assets/LogoutIconButton";
 
 import { Favorite, Logo, Notification, Settings } from "../../assets/icon";

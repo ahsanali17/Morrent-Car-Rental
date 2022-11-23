@@ -64,7 +64,7 @@ const StartServer = () => {
 
 	routerServer.use(express.urlencoded({ extended: true }));
 	routerServer.use(express.json());
-    routerServer.use(cors());
+  routerServer.use(cors());
 
 	/** Rules of our API */
 	routerServer.use((req: Request, res: Response, next: NextFunction) => {
