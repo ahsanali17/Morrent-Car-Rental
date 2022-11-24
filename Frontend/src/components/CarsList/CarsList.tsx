@@ -11,7 +11,7 @@ type carListProps = {
 
 const CarsList = ({ searchItems }: carListProps) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const [recordsPerPage, setRecordsPerPage] = useState(10)
+  const [recordsPerPage, setRecordsPerPage] = useState(5)
   const context = useContext(CarsContext)
   const { cars } = context
   const indexOfLastRecord = currentPage * recordsPerPage

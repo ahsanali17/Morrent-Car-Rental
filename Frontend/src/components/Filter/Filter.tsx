@@ -26,11 +26,11 @@ export default function Filter() {
   const filterData: FilterDataType = [
     {
       title: "TYPE",
-      options: ["sport", "suv", "mvp", "sedan", "coupe", "hatchback"],
+      options: ["Sport", "SUV", "MVP", "Sedan", "Coupe", "Hatchback"],
     },
     {
       title: "CAPACITY",
-      options: ["2 Persons", "4 persons", "6 persons", "8 persons"],
+      options: ["2", "4", "6", "8"],
     },
   ]
 

@@ -16,9 +16,10 @@ export enum ActionKind {
 //car object type
 export type CarType = {
   _id: number
-  car_body_type: string
-  type_car: string
   car_title: string
+  car_brand:string
+  car_body_type: string
+  file_path:string
   seat_capacity: number
   maximum_gasoline: number
   daily_rate: number
@@ -63,7 +64,7 @@ type CarsContextType = {
   deleteCar: (id: number) => void
   addToQuery: (q: string) => void
   addToSearch: (s: CarType[]) => void
-  searchFilter: (c: CarType[]) => CarType[]
+  
 }
 
 const CarsContext = createContext<CarsContextType>({} as CarsContextType)
@@ -218,15 +219,7 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
     dispatch({ type: ActionKind.Add_To_Search, payload: searchCarList })
   }
 
-  const searchFilter = (searchCars: CarType[]) => {
-    const filteredCars = searchCars.filter(
-      (car) =>
-        state.filterType.includes(car.type_car) &&
-        state.filterPrice < car.daily_rate
-    );
-
-    return filteredCars
-  }
+  
 
   return (
     <div>
@@ -238,7 +231,6 @@ function CarsContextProvider({ children }: CarsContextProviderProps) {
           deleteCar,
           addToQuery,
           addToSearch,
-          searchFilter,
           dispatch,
         }}
       >
