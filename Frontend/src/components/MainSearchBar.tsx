@@ -29,11 +29,11 @@ const SearchBar = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setTerm(debounceTerm)
-    }, 1000)
+    }, 500)
     return () => clearTimeout(timer)
   }, [debounceTerm])
   useEffect(() => {
-    
+    addToQuery(term)
     if (term.length != 0) {
       navigate(`/search?query=${term}`)
     } else {

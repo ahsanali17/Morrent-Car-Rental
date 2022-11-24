@@ -27,10 +27,11 @@ const CarCard = ({ car }: CarCardType) => {
   const { googleId } = useContext(UserContextObj)
   const gId = parseInt(googleId)
   const { addToFavourite } = context
-  const [carFavourite, setCarFavourite] = useState<CarFavouriteType>({ googleId: parseInt(googleId) | 0, isFavourite: false, } as CarFavouriteType)
-  
-  console.log(car)
-
+  const [userValue, setUserValue] = useState(false)
+  const [userId, setUserId] = useState(0)
+  const [carId,setcarId]=useState(car._id)
+  // console.log(userId, userValue, favourite, googleId, gId)
+  // console.log(userId==gId)
   useEffect(() => {
     if (gId) {
       console.log("ran")
@@ -38,7 +39,7 @@ const CarCard = ({ car }: CarCardType) => {
       if (Object.keys(lS).includes(googleId)) {
         setUserId(gId)
         setUserValue(false)
-        console.log(lS, ":LS")
+        // console.log(lS, ":LS")
       } else {
         setUserId(gId)
         setUserValue(false)
@@ -64,7 +65,7 @@ const CarCard = ({ car }: CarCardType) => {
       "isFavourite",
       JSON.stringify({ ...lS,[gId]:{...[carId],[carId]:userValue}})
     )
-    console.log(lS, ":LS")
+    // console.log(lS, ":LS")
   }, [favourite])
   const handleFavourite = (id: number) => {
     setFavourite((prevState) => !prevState)
