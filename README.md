@@ -37,7 +37,7 @@ Open a terminal or command prompt and navigate to the directory where you want t
 
 Run the following command to clone the project from GitHub:
 
-git clone https://github.com/JNGO27/Morrent-CarRental.git
+git clone https://github.com/ahsanali17/Morrent-Car-Rental
 This will create a new directory called "Morrent-CarRental" in the current location, containing the code for the Car Rent project.
 
 Navigate to the project directory by running the following command:
