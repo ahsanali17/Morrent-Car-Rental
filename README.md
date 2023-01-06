@@ -1,4 +1,4 @@
-# Morrent Car Rental 
+# Car Rental 
 
 CarRent Application
 CarRent is a web-based application that allows users to rent cars from a variety of locations around the world. Users can search for cars based on their desired location and rental dates, view available options, and book their rental directly through the application.
