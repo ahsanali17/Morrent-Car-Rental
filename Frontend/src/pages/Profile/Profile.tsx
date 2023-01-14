@@ -1,15 +1,16 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import { Header, Footer, ProfileComponent } from '../../components';
-import { ProfileWrapper } from './styles';
+import { Header, Footer, ProfileComponent } from "../../components";
+import { ProfileWrapper } from "./styles";
 
 const Profile: FC = () => {
-    return (
-        <ProfileWrapper>
-            <ProfileComponent />
-            <Footer />
-        </ProfileWrapper>
-    )
-}
+  return (
+    // Make change to develop
+    <ProfileWrapper>
+      <ProfileComponent />
+      <Footer />
+    </ProfileWrapper>
+  );
+};
 
-export default Profile; 
+export default Profile;
